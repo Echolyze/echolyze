@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="/lib/AdminLTE-2.3.6/plugins/select2/select2.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/lib/AdminLTE-2.3.6/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="/lib/AdminLTE-2.3.6/dist/css/skins/skin-blue.min.css">
@@ -41,7 +43,7 @@
     .subheader-pe {
       margin-top: 0px;
     }
-    .select2-pe .select2-container--default .select2-selection--single .select2-selection__arrow{
+    /*.select2-pe .select2-container--default .select2-selection--single .select2-selection__arrow{
       height: 34px !important;
     }
     .select2-pe .select2-container .select2-selection--single{
@@ -49,6 +51,9 @@
       padding-left: 4px !important;
       border-radius: 0px !important;
       border-color: #d2d6de !important;
+    }*/
+    .select2-dropdown .select2-search__field:focus, .select2-search--inline .select2-search__field:focus {
+      border-width: 0px !important;
     }
     .child-node-pe {
       transform: rotate(180deg);
@@ -69,7 +74,6 @@
   <!-- AdminLTE App -->
   <script src="/lib/AdminLTE-2.3.6/dist/js/app.min.js"></script>
   <!-- Select2 -->
-  <link rel="stylesheet" href="/lib/AdminLTE-2.3.6/plugins/select2/select2.min.css">
   <script src="/lib/AdminLTE-2.3.6/plugins/select2/select2.full.min.js"></script>
 
   <script type="text/javascript">

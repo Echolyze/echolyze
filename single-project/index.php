@@ -16,9 +16,13 @@ if ($destination == 'nodes') {
 } else if ($destination == 'codes') {
 	$destinationPageName = "Manage Codes";
 	$destinationInclude = 'codes.php';
+} else if ($destination == 'artifacts') {
+	$destinationPageName = "Manage Artifacts";
+	$destinationInclude = 'artifacts.php';
+} else if ($destination == 'artifacts-single') {
+	$destinationPageName = "Manage Artifacts";
+	$destinationInclude = 'artifacts-single.php';
 }
-
-
 
 ?>
 
