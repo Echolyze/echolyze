@@ -77,8 +77,7 @@
   <script src="/lib/AdminLTE-2.3.6/plugins/select2/select2.full.min.js"></script>
 
   <script type="text/javascript">
-    function gup( name )
-    {
+    function gup( name ) {
       name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
       var regexS = "[\\?&]"+name+"=([^&#]*)";
       var regex = new RegExp( regexS );

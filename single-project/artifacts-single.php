@@ -48,6 +48,9 @@ abbr {
 	background-color: yellow;
 	cursor: pointer;
 }
+abbr.editing {
+	background-color: pink;
+}
 #leftArrowIndicator {
     position: absolute;
     top: 50%;
@@ -61,13 +64,58 @@ abbr {
     border-radius: 3px;
     color: white;
 }
+.nav-tabs-custom>.nav-tabs>li {
+	border-top-color: #f5f5f5;
+	margin-right: 0px;
+	width: 33.33333333%;
+}
+
+.nav-tabs-custom>.nav-tabs>li>a {
+	min-height: 70px;
+}
+.nav-tabs-custom>.tab-content {
+	padding: 0px;
+}
+#cke_artifactBody {
+	border-left: none !important;
+	border-right: none !important;
+	border-color: #f5f5f5 !important;
+}
+.cke_top {
+	border-bottom-color: #f5f5f5 !important;
+}
+.nav-tabs-custom {
+	border-left: 1px solid #d2d6de;
+	border-bottom: 1px solid #d2d6de;
+	border-right: 1px solid #d2d6de;
+}
+#artifactBodyForCoding {
+	padding: 20px;
+	font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+	font-size: 13px;
+	/*border-right: 1px solid #f5f5f5 !important;*/
+}
+.artifactBody-step3-container {
+	border-top: 1px solid #f5f5f5 !important;
+	border-bottom: 1px solid #f5f5f5 !important;
+}
+#addFragmentForm_Message.active {
+    position: absolute;
+    width: 100%;
+    top: 41px;
+    bottom: 0;
+    background-color: rgba(245, 245, 245, 0.60);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+}
 </style>
 <div id="cal1">&nbsp;</div>
     <div id="cal2">&nbsp;</div>
     <div id="tooltip"><a id="codeFragmentMoveableButton" class="btn btn-block btn-warning btn-xs" style="margin:0"><i class="fa fa-edit"></i> Code Selected Text</a></div>
     
 <div class="row">
-	<div class="col-xs-8">
+	<div class="col-xs-12">
 		<div id="allCodes" class="box box-primary">
 			<div class="box-header with-border">
 				<h3 class="box-title">Edit Artifact</h3>
@@ -94,68 +142,100 @@ abbr {
 							</select>
 						</div>
 					</div>
-					<label for="artifactBody" class="alpha omega col-sm-12">Artifact Body:</label>
-					<div class="form-group">
-						<div id="artifactBody" contenteditable="true">
+					<div class="col-sm-12 alpha omega">
+					<label for="" class="alpha omega col-sm-12">Artifact Body:</label>
+					<div class="nav-tabs-custom" style="display: inline-block; width: 100%">
+						<ul class="nav nav-tabs">
+							<li class="active"><a id="step1TabHandle" href="#tab_1-1" style="font-size:10px;" data-toggle="tab"><span style="font-size:14px; display: inline-block; width: 100%; font-weight: bold;">Step 1: Raw Artifact</span>Copy/paste the contents of your artifact into the text area. Edit artifact (content and/or formatting) as needed.</a></li>
+							<li><a href="#tab_2-2" id="step2TabHandle" style="font-size:10px;" data-toggle="tab"><span style="font-size:14px; display: inline-block; width: 100%; font-weight: bold;">Step 2: Artifact Preprocessing</span>Specify options to make coding your artifact easier.</a></li>
+							<li><a href="#tab_3-3" id="step3TabHandle" style="font-size:10px;" data-toggle="tab"><span style="font-size:14px; display: inline-block; width: 100%; font-weight: bold;">Step 3: Artifact Coding</span>Specify codes, positive/negative reactions, and add comments to artifact fragments.</a></li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="tab_1-1">
+								<div class="form-group" style="margin-bottom: 0px">
+									<div id="artifactBody" contenteditable="true">
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane" id="tab_2-2">
+							<div class="col-xs-12">
+								<p style="margin-top: 10px">Optionally, you can choose to pre create fragments by word. By doing this, your artifact will automatically be broken into a fragment per word. Thus, each word will be codeable.</p>
+								<p style="margin-top: 10px">Warning: If your artifact already contains fragments, this operation will overwrite them.</p>
+								<button type="button" id="autoBreakIntoOneWordFragments" class="btn btn-primary">Break Artifact Into One Word Fragments</button>
+							</div>
+
+							</div>
+							<div class="tab-pane" id="tab_3-3">
+								<div class="col-xs-12 alpha omega artifactBody-step3-container">
+									<div id="artifactBodyForCoding" class="artifactBody-Codeable col-xs-8"></div>
+									    <div class="col-xs-4">
+										<div id="fragmentModalOptions" style="z-index: 10; margin-top: 15px;" class="box box-default">
+											<div class="box-header with-border">
+												<h3 class="box-title">Word / Fragment Code Details</h3>
+											</div>
+											<form id="addFragmentForm" class="form-horizontal">
+												<div class="box-body omega alpha">
+												<div id="addFragmentForm_Message" class="active">
+													<div class="alert alert-info" style="width:100%; margin:20%;">
+														<h4><i class="icon fa fa-info"></i> No Fragment Selected!</h4>
+														To view coded data for a particular fragment, please select one. To code data for the first time, highlight the text you'd like to code.
+													</div>
+												</div>
+													<div class="col-xs-12" style="border-bottom: 1px solid #f4f4f4">
+														<div class="form-group" style="margin-left: 0px; margin-top: 0px; margin-right: 0px;">
+															<label for="fragmentCodes" class="col-sm-12 alpha omega">Codes:</label>
+															<select class="form-control select2 select2-hidden-accessible" multiple="multiple" style="width:100%" id="fragmentModalOptions_Codes" data-placeholder="Select Codes...">
+															</select>
+														</div>
+													</div>
+													<div class="col-xs-12" style="border-bottom: 1px solid #f4f4f4">
+														<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+															<label for="fragmentCodes" class="col-sm-12 alpha omega">Relationship:</label>
+															<select class="form-control select2" style="width:100%" id="fragmentModalOptions_NodeA"></select>
+															<select class="form-control select2" style="width:100%" id="fragmentModalOptions_Feelings">
+																<option value="positve">Feels postive towards...</option>
+																<option value="negative">Feels negatives towards...</option>
+															</select>
+															<select class="form-control select2" style="width:100%" id="fragmentModalOptions_NodeB"></select>
+														</div>
+													</div>
+													<div class="col-xs-12" style="border-bottom: 1px solid #f4f4f4">
+														<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+															<label for="fragmentModalOptions_Comment" class="col-sm-12 alpha omega">Comments/Notes:</label>
+															<div class="col-sm-12 alpha omega">
+																<textarea class="form-control" id="fragmentModalOptions_Comment" placeholder="Comments/Notes"></textarea>
+															</div>
+														</div>
+													</div>
+													<div class="col-xs-12">
+														<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+															<label for="fragmentModalOptions_Weight" class="col-sm-12 alpha omega">Numeric Weight:</label>
+															<div class="col-sm-12 alpha omega">
+																<input type="text" class="form-control" id="fragmentModalOptions_Weight" placeholder="Enter a number"></input>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="box-footer">
+													<button type="button" id="fragmentModalOptions_Save" class="btn btn-primary">Save Fragment</button>
+													<button type="reset" id="fragmentModalOptions_Cancel" class="btn btn-default">Cancel</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
+						<a id="previousStepHandle" style="display:none; margin: 10px;" class="btn btn-default pull-left"><< Previous Step </a>
+						<a id="nextStepHandle" style="margin: 10px;" class="btn btn-default pull-right">Next Step >> </a>
+					</div>
 					</div>
 				</form>
 			</div>
 			<div class="box-footer">
-				<button type="" id="beginCodingButton" class="btn btn-primary" >Save & Code Artifact</button>
-				<button type="submit" id="saveCodingButton" class="btn btn-primary" disabled>Save Coded Fragments </button>
+				<button type="" id="saveCodingButton" class="btn btn-primary" >Save Artifact & Coded Fragments</button>
 				<a type="reset" id="editArtifactButton_Cancel" class="btn btn-default">Cancel</a>
 			</div>
-		</div>
-	</div>
-    <div class="col-xs-4">
-		<div id="fragmentModalOptions" style="display: none; z-index: 10; border: 3px solid #3c8dbc" class="box box-primary">
-			<div id="leftArrowIndicator"><i class="fa fa-arrow-left"></i></div>
-			<div class="box-header with-border">
-				<h3 class="box-title">Code Selected Text / Fragment</h3>
-			</div>
-			<form id="addNodeForm" class="form-horizontal">
-				<div class="box-body omega alpha">
-					<div class="col-xs-12" style="border-bottom: 1px solid #f4f4f4">
-						<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
-							<label for="fragmentCodes" class="col-sm-12 alpha omega">Codes:</label>
-							<select class="form-control select2 select2-hidden-accessible" multiple="multiple" style="width:100%" id="fragmentModalOptions_Codes" data-placeholder="Select Codes...">
-							</select>
-						</div>
-					</div>
-					<div class="col-xs-12" style="border-bottom: 1px solid #f4f4f4">
-						<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
-							<label for="fragmentCodes" class="col-sm-12 alpha omega">Relationship:</label>
-							<select class="form-control select2 select2-hidden-accessible" style="width:100%" id="fragmentModalOptions_NodeA"></select>
-							<select class="form-control select2 select2-hidden-accessible" style="width:100%" id="fragmentModalOptions_Feelings">
-								<option value="positve">Feels postive towards...</option>
-								<option value="negative">Feels negatives towards...</option>
-							</select>
-							<select class="form-control select2 select2-hidden-accessible" style="width:100%" id="fragmentModalOptions_NodeB"></select>
-						</div>
-					</div>
-					<div class="col-xs-12" style="border-bottom: 1px solid #f4f4f4">
-						<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
-							<label for="fragmentModalOptions_Comment" class="col-sm-12 alpha omega">Comments/Notes:</label>
-							<div class="col-sm-12 alpha omega">
-								<textarea class="form-control" id="fragmentModalOptions_Comment" placeholder="Comments/Notes"></textarea>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12">
-						<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
-							<label for="fragmentModalOptions_Weight" class="col-sm-12 alpha omega">Numeric Weight:</label>
-							<div class="col-sm-12 alpha omega">
-								<input type="text" class="form-control" id="fragmentModalOptions_Weight" placeholder="Enter a number"></input>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="box-footer">
-					<button type="button" id="fragmentModalOptions_Save" class="btn btn-primary">Save Fragment</button>
-					<button type="reset" id="fragmentModalOptions_Cancel" class="btn btn-default">Cancel</button>
-				</div>
-			</form>
 		</div>
 	</div>
 </div>
@@ -183,6 +263,8 @@ abbr {
 	var allNodes = [];
 	var currentlySelectedObject;
 	var artifactIDGlobal = '';
+
+	var latestArtifactBodyContents = '';
 
 	$('#editArtifactButton_Cancel').attr('href', '/single-project/?projectID=' + currentProject + '&destination=artifacts');
 
@@ -248,39 +330,145 @@ abbr {
 			$.get("/api/standard.php/artifacts/" + artifactID, function(data) {
 				if (data) {
 					$('#artifactName').val(data.name);
-					$('#artifactBody').html(data.body)
-					initCKEditorArea();
+					$('#artifactBody').html(data.body);
+					latestArtifactBodyContents = data.body;
 					deafultProjectingNode.select2().val(data.default_projector).trigger("change");
 					var globalCodesArrayd = [];
 					if(data.global_codes) {
 						globalCodesArrayd = data.global_codes.split(',');
 					}
 					globalArtifactCodes.select2().val(globalCodesArrayd).trigger("change");
+					artifactBodyTabInitialSetup();
 				}
 			});
 		} else {
-			initCKEditorArea()
+			artifactBodyTabInitialSetup();
 		}
 	}
 	
 
-	function initCKEditorArea() {
+	// *************** Artifact Body Tabs Management ***************
+	var currentTab = 1;
+	function artifactBodyTabInitialSetup() {
+		var preChosenStep = gup('step');
+		if(preChosenStep.length > 0) {
+			if(preChosenStep == '2') {
+				currentTab = '2';
+				$('#step2TabHandle').click();
+			} else if(preChosenStep == '3') {
+				currentTab = '3';
+				$('#step3TabHandle').click();
+			} else {
+				currentTab = '1';
+				$('#step1TabHandle').click();
+			}
+		} else {
+			currentTab = '1';
+			$('#step1TabHandle').click();
+		}
+	}
 
+	function artifactBodyTabTearDown(futureTab) {
+		if(futureTab != currentTab) {
+			if(currentTab == '2') {
+				endStep2();
+			} else if(currentTab == '3') {
+				endStep3();
+			} else {
+				endStep1();
+			}
+			currentTab = futureTab;
+		}
+		setupPrevNextButtons(futureTab);
+	}
+
+	$('#step1TabHandle').click(function(){
+		artifactBodyTabTearDown('1');
+		initStep1();
+	})
+	$('#step2TabHandle').click(function(){
+		artifactBodyTabTearDown('2');
+		initStep2();
+	})
+	$('#step3TabHandle').click(function(){
+		artifactBodyTabTearDown('3');
+		initStep3();
+	})
+
+	function setupPrevNextButtons(futureTab) {
+		console.log('running setupPrevNextButtons for tab: ' + futureTab);
+		if(futureTab == '2') {
+			$('#previousStepHandle').removeAttr('disabled');
+			$('#nextStepHandle').removeAttr('disabled');
+			$('#previousStepHandle').click(function(){
+				console.log('current tab is: ' + futureTab + '... requesting step 1 click');
+				$('#step1TabHandle').click();
+			})
+			$('#nextStepHandle').click(function(){
+				$('#step3TabHandle').click();
+			})
+		} else if (futureTab == '3') {
+			$('#previousStepHandle').removeAttr('disabled');
+			$('#nextStepHandle').attr('disabled', 'true');
+			$('#previousStepHandle').click(function(){
+				console.log('current tab is: ' + futureTab + '... requesting step 2 click');
+				$('#step2TabHandle').click();
+			})
+		} else {
+			$('#previousStepHandle').attr('disabled', 'true');
+			$('#nextStepHandle').removeAttr('disabled');
+			$('#nextStepHandle').click(function(){
+				$('#step2TabHandle').click();
+			})
+		}
+	}
+
+	function initStep1() {
+		console.log('INIT STEP 1');
+		initCKEditorArea()
+	}
+	function endStep1() {
+		console.log('END STEP 1');
+		var bodyContents = CKEDITOR.instances.artifactBody.getData();
+		if (CKEDITOR.instances.artifactBody) CKEDITOR.instances.artifactBody.destroy();
+		performBasicSave(bodyContents);
+	}
+	function initStep2() {
+		console.log('INIT STEP 2');
+	}
+	function endStep2() {
+		console.log('END STEP 2');
+	}
+	function initStep3() {
+		console.log('INIT STEP 3');
+		$('#artifactBodyForCoding').html(latestArtifactBodyContents);
+		activateFragmentCoding();
+		$('abbr').click(function(e){
+			showAbbrOptions(e.target.id);
+		})
+	}
+	function endStep3() {
+		console.log('END STEP 3');
+		performArtifactWithCodesSave()
+	}
+
+
+	// *************** Artifact Body Tabs Util ***************
+
+	$('#autoBreakIntoOneWordFragments').click(function(){
+		console.log(latestArtifactBodyContents);
+
+	})
+
+	function initCKEditorArea() {
 		CKEDITOR.config.floatingtools = 'Basic';
 		CKEDITOR.config.floatingtools_Basic =
 		[
 			['Abbr', 'Italic', '-', 'NumberedList', 'BulletedList']
 		];
 
-		// CKEDITOR.inline( 'artifactBody' );
 		CKEDITOR.replace( 'artifactBody', {
-			// Load the abbr plugin.
 			extraPlugins: 'autogrow,abbr,toolbar,floating-tools',
-			// config.extraPlugins = 'floating-tools'
-
-			// The following options are set to make the sample more clear for demonstration purposes.
-
-			// Rearrange toolbar groups and remove unnecessary plugins.
 			toolbarGroups: [
 				{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
 				{ name: 'coding' },
@@ -293,13 +481,11 @@ abbr {
 		});
 	}
 
-
-	// *************** Click to add Fragment... ***************
+	// For "click here to add fragment"...
 	function checkIfInArticleBody(textSelection) {
 		// console.log('here');
-		var artifactBody = $("#artifactBody").text();
-		if (artifactBody.indexOf(textSelection.anchorNode.data) > 0) {
-			console.log('yes, it is');
+		var artifactBody = $("#artifactBodyForCoding").text();
+		if (artifactBody.indexOf(textSelection.anchorNode.data) >= 0) {
 			return true;
 		} else {
 			console.log('nope');
@@ -307,22 +493,7 @@ abbr {
 		}
 	}
 
-	beginCodingButton.click(function(){
-		var bodyContents = CKEDITOR.instances.artifactBody.getData();
-		performBasicSave(bodyContents);
-
-
-		$('#artifactBody').attr('contenteditable', 'false');
-		if (CKEDITOR.instances.artifactBody) CKEDITOR.instances.artifactBody.destroy();
-
-		$('#artifactBody').addClass('artifactBody-Codeable');
-
-		$('abbr').click(function(e){
-			showAbbrOptions(e.target.id);
-		})
-
-		alert("To code a piece of text, highlight it with your cursor.");
-
+	function activateFragmentCoding() {
 		var ele = document.getElementById('tooltip');
 		var sel = window.getSelection();
 		var rel1= document.createRange();
@@ -346,12 +517,11 @@ abbr {
 		    	ele.style.display = 'none';
 		    }
 		});
-
-	})
+	}
 
 	codeFragmentMoveableButton.click(function(){
-		console.log('running select code');
 		   
+		clearAnyEditingAbbrs()
 		var selection = getSelectedText();
 	    var selection_text = selection.toString();
 	    
@@ -369,8 +539,8 @@ abbr {
 	    $('#' + span.id).click(function(){
 			showAbbrOptions(span.id);
 		})
-		// initially show the fragment options after click
-		showAbbrOptions(span.id);
+
+ 		showAbbrOptions(span.id);
 		$('#tooltip').css('display', 'none');
 	})
 
@@ -380,13 +550,13 @@ abbr {
 	}
 
 	function showAbbrOptions(abbrID) {
-		console.log(abbrID);
-		fragmentModalOptions.css('display', 'block');
-		var abbrElement = $("#" + abbrID);
-		console.log(abbrElement);
+		$('#addFragmentForm_Message').css('display', 'none');
 
-		var topPosition = (abbrElement.position().top - (fragmentModalOptions.outerHeight() * (4/5)));
-		fragmentModalOptions.css('top', topPosition);
+		console.log(abbrID);
+		clearAnyEditingAbbrs();
+		var abbrElement = $('#artifactBodyForCoding').find("#" + abbrID);
+		abbrElement.addClass('editing');
+
 		fragmentModalOptions.attr('data-abbrID', abbrID);
 
 		fragmentModalOptions_Codes.select2({
@@ -414,7 +584,6 @@ abbr {
 		// Populate for existing abbr:
 		if(abbrElement.attr('data-codes')) {
 			fragmentModalOptions_CodesArrayd = abbrElement.attr('data-codes').split(',');
-			console.log('knows theres codes');
 			fragmentModalOptions_Codes.select2().val(fragmentModalOptions_CodesArrayd).trigger("change");
 		}
 		if (abbrElement.attr('data-nodeA')) {
@@ -427,9 +596,8 @@ abbr {
 			fragmentModalOptions_NodeB.select2().val(abbrElement.attr('data-nodeB')).trigger("change");
 		}
 		if (abbrElement.attr('data-comments')) {
-			fragmentModalOptions_Comment.val(abbrElement.attr('data-comment'));
+			fragmentModalOptions_Comment.val(abbrElement.attr('data-comments'));
 		}
-
 	}
 
 	fragmentModalOptions_Save.click(function(){
@@ -445,36 +613,44 @@ abbr {
 			}
 		}
 
-		$("#" + fragmentID).attr('data-codes',fragmentCodesFormatted);
-		$("#" + fragmentID).attr('data-nodeA',fragmentModalOptions_NodeA.val());
-		$("#" + fragmentID).attr('data-nodeB',fragmentModalOptions_NodeB.val());
-		$("#" + fragmentID).attr('data-feelings',fragmentModalOptions_Feelings.val());
-		$("#" + fragmentID).attr('data-comment',fragmentModalOptions_Comment.val());
+		$('#artifactBodyForCoding').find("#" + fragmentID).attr('data-codes',fragmentCodesFormatted);
+		$('#artifactBodyForCoding').find("#" + fragmentID).attr('data-nodeA',fragmentModalOptions_NodeA.val());
+		$('#artifactBodyForCoding').find("#" + fragmentID).attr('data-nodeB',fragmentModalOptions_NodeB.val());
+		$('#artifactBodyForCoding').find("#" + fragmentID).attr('data-feelings',fragmentModalOptions_Feelings.val());
+		$('#artifactBodyForCoding').find("#" + fragmentID).attr('data-comments',fragmentModalOptions_Comment.val());
 
-		hideAbbrOptions(fragmentID);
+		clearAbbrOptions(fragmentID);
 	})
 
 	fragmentModalOptions_Cancel.click(function(){
 		var fragmentID = fragmentModalOptions.attr('data-abbrID');
-
-		hideAbbrOptions(fragmentID);
+		clearAbbrOptions(fragmentID);
 	})
 
-	function hideAbbrOptions(abbrID) {
-		fragmentModalOptions.css('display', 'none');
+	function clearAbbrOptions(abbrID) {
+		$('#artifactBodyForCoding').find("#" + abbrID).removeClass('editing');
+		$('#addFragmentForm_Message').css('display', 'flex');
+		fragmentModalOptions_Codes.select2().val('').trigger("change");
+		fragmentModalOptions_NodeA.select2().val('').trigger("change");
+		fragmentModalOptions_NodeB.select2().val('').trigger("change");
+		fragmentModalOptions_Feelings.select2().val('').trigger("change");
+		fragmentModalOptions_Comment.val('');
+	}
+
+	function clearAnyEditingAbbrs() {
+		$('body').find('abbr').removeClass('editing');
 	}
 
 
 	saveCodingButton.click(function(){
-
 		performArtifactWithCodesSave(artifactIDGlobal, $("#artifactBody").html());
-
 	})
 
 
 	// *************** BASIC Artifact Save ***************
 	function performBasicSave(body) {
 		var artifactID = gup('rid');
+		latestArtifactBodyContents = body;
 
 		var globalCodesFormatted = '';
 		if ($('#globalArtifactCodes').val()) {
@@ -513,15 +689,14 @@ abbr {
 				}
 			});
 		}
-		disableBasicFields();
 	}
 
 
 	// *************** Artifact With Codes Save ***************
-	function performArtifactWithCodesSave(artifactID, body) {
-
+	function performArtifactWithCodesSave() {
+		var artifactID = gup('rid');
 		var formData = {
-			body: body
+			body: $('#artifactBodyForCoding').html()
 		}
 
 		// @TODO: Error Validation
