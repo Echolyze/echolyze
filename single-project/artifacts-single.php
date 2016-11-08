@@ -47,6 +47,8 @@
 abbr {
 	background-color: yellow;
 	cursor: pointer;
+	padding: 3px;
+    border-radius: 5px;
 }
 abbr.editing {
 	background-color: pink;
@@ -220,8 +222,8 @@ abbr.editing {
 													</div>
 												</div>
 												<div class="box-footer">
-													<button type="button" id="fragmentModalOptions_Save" class="btn btn-primary">Save Fragment</button>
-													<button type="reset" id="fragmentModalOptions_Cancel" class="btn btn-default">Cancel</button>
+													<button type="button" id="fragmentModalOptions_Save" class="btn btn-sm btn-primary">Save Fragment</button>
+													<button type="reset" id="fragmentModalOptions_Cancel" class="btn btn-sm btn-default">Cancel</button>
 												</div>
 											</form>
 										</div>
@@ -429,6 +431,7 @@ abbr.editing {
 		var bodyContents = CKEDITOR.instances.artifactBody.getData();
 		if (CKEDITOR.instances.artifactBody) CKEDITOR.instances.artifactBody.destroy();
 		performBasicSave(bodyContents);
+		latestArtifactBodyContents = bodyContents;
 	}
 	function initStep2() {
 		console.log('INIT STEP 2');
