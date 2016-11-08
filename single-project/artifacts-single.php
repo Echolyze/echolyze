@@ -159,9 +159,12 @@ abbr.editing {
 							</div>
 							<div class="tab-pane" id="tab_2-2">
 							<div class="col-xs-12">
+								<div id="artifactAlreadyHasFragmentsError" class="hidden col-xs-12 alert alert-danger" style="margin-top: 15px;">
+									<i class="icon fa fa-ban"></i><strong>Sorry, this operation can not be completed on this artifact.</strong> This is most likely because the artifact already contains coded fragments. Please continue to the next step. 
+								</div>
 								<p style="margin-top: 10px">Optionally, you can choose to pre create fragments by word. By doing this, your artifact will automatically be broken into a fragment per word. Thus, each word will be codeable.</p>
-								<p style="margin-top: 10px">Warning: If your artifact already contains fragments, this operation will overwrite them.</p>
-								<button type="button" id="autoBreakIntoOneWordFragments" class="btn btn-primary">Break Artifact Into One Word Fragments</button>
+								<button type="button" id="autoBreakIntoOneWordFragments" class="btn btn-sm btn-info">Break Artifact Into One Word Fragments</button>
+								<div id="artifactBodyForWordFragmenting" style="display: none"></div>
 							</div>
 
 							</div>
@@ -277,7 +280,7 @@ abbr.editing {
 					for (var j = 0; j < data.nodes.length; j++) {
 						if (data.nodes[j].id == data.nodes[i].parent_node) { // Looping through to get parent information for label
 							allNodes.push({
-								id: data.nodes[j].id,
+								id: data.nodes[i].id,
 								text: data.nodes[j].name + ' > ' + data.nodes[i].name
 							})
 						}
@@ -377,45 +380,36 @@ abbr.editing {
 			} else {
 				endStep1();
 			}
-			currentTab = futureTab;
 		}
 		setupPrevNextButtons(futureTab);
 	}
 
 	$('#step1TabHandle').click(function(){
 		artifactBodyTabTearDown('1');
+		currentTab = 1;
 		initStep1();
 	})
 	$('#step2TabHandle').click(function(){
 		artifactBodyTabTearDown('2');
+		currentTab = 2;
 		initStep2();
 	})
 	$('#step3TabHandle').click(function(){
 		artifactBodyTabTearDown('3');
+		currentTab = 3;
 		initStep3();
 	})
 
 	function setupPrevNextButtons(futureTab) {
 		console.log('running setupPrevNextButtons for tab: ' + futureTab);
 		if(futureTab == '2') {
-			$('#previousStepHandle').removeAttr('disabled');
 			$('#nextStepHandle').removeAttr('disabled');
-			$('#previousStepHandle').click(function(){
-				console.log('current tab is: ' + futureTab + '... requesting step 1 click');
-				$('#step1TabHandle').click();
-			})
 			$('#nextStepHandle').click(function(){
 				$('#step3TabHandle').click();
 			})
 		} else if (futureTab == '3') {
-			$('#previousStepHandle').removeAttr('disabled');
 			$('#nextStepHandle').attr('disabled', 'true');
-			$('#previousStepHandle').click(function(){
-				console.log('current tab is: ' + futureTab + '... requesting step 2 click');
-				$('#step2TabHandle').click();
-			})
 		} else {
-			$('#previousStepHandle').attr('disabled', 'true');
 			$('#nextStepHandle').removeAttr('disabled');
 			$('#nextStepHandle').click(function(){
 				$('#step2TabHandle').click();
@@ -425,6 +419,9 @@ abbr.editing {
 
 	function initStep1() {
 		console.log('INIT STEP 1');
+		console.log(latestArtifactBodyContents);
+		$('#artifactBody').html('');
+		$('#artifactBody').append(latestArtifactBodyContents);
 		initCKEditorArea()
 	}
 	function endStep1() {
@@ -435,13 +432,24 @@ abbr.editing {
 	}
 	function initStep2() {
 		console.log('INIT STEP 2');
+		$('#artifactBodyForWordFragmenting').html(latestArtifactBodyContents);
+		if (latestArtifactBodyContents.indexOf('<abbr') > 0) {
+			$('#autoBreakIntoOneWordFragments').attr('disabled', 'true');
+			$('#artifactAlreadyHasFragmentsError').removeClass('hidden');
+		}
 	}
 	function endStep2() {
 		console.log('END STEP 2');
+		latestArtifactBodyContents = $('#artifactBodyForWordFragmenting').html();
+		console.log(latestArtifactBodyContents);
+		console.log($('#artifactBodyForWordFragmenting').html());
+		performArtifactWithCodesSave();
 	}
 	function initStep3() {
 		console.log('INIT STEP 3');
-		$('#artifactBodyForCoding').html(latestArtifactBodyContents);
+		console.log(latestArtifactBodyContents);
+		$('#artifactBodyForCoding').html('');
+		$('#artifactBodyForCoding').append(latestArtifactBodyContents);
 		activateFragmentCoding();
 		$('abbr').click(function(e){
 			showAbbrOptions(e.target.id);
@@ -449,6 +457,7 @@ abbr.editing {
 	}
 	function endStep3() {
 		console.log('END STEP 3');
+		latestArtifactBodyContents = $('#artifactBodyForCoding').html();
 		performArtifactWithCodesSave()
 	}
 
@@ -456,7 +465,18 @@ abbr.editing {
 	// *************** Artifact Body Tabs Util ***************
 
 	$('#autoBreakIntoOneWordFragments').click(function(){
-		console.log(latestArtifactBodyContents);
+		var c = 0;
+		$('#artifactBodyForWordFragmenting > *').each(function( ind ){
+			var text = $(this).html().split(' '),
+			len = text.length,               
+			result = [];                     
+			for( i=0; i<len; i++ ) {            
+				result[i] = '<abbr id="'+( ++c )+'">' + text[i] + '</abbr>'; 
+			}
+			$(this).html(result.join(' '));      
+		});
+		console.log($('#artifactBodyForWordFragmenting > *').html());
+		latestArtifactBodyContents = $('#artifactBodyForWordFragmenting > *').html();
 
 	})
 
@@ -468,10 +488,9 @@ abbr.editing {
 		];
 
 		CKEDITOR.replace( 'artifactBody', {
-			extraPlugins: 'autogrow,abbr,toolbar,floating-tools',
+			extraPlugins: 'autogrow,abbr,toolbar',
 			toolbarGroups: [
 				{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
-				{ name: 'coding' },
 				{ name: 'document',	   groups: [ 'mode' ] },
 				{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
 				{ name: 'paragraph',   groups: [ 'list', 'indent' ] },
@@ -643,14 +662,13 @@ abbr.editing {
 
 
 	saveCodingButton.click(function(){
-		performArtifactWithCodesSave(artifactIDGlobal, $("#artifactBody").html());
+		performBasicSave($('#artifactBodyForCoding').html(), true);
 	})
 
 
 	// *************** BASIC Artifact Save ***************
-	function performBasicSave(body) {
+	function performBasicSave(body, redirectHome) {
 		var artifactID = gup('rid');
-		latestArtifactBodyContents = body;
 
 		var globalCodesFormatted = '';
 		if ($('#globalArtifactCodes').val()) {
@@ -676,6 +694,9 @@ abbr.editing {
 			$.put("/api/standard.php/artifacts/" + artifactID, formData, function(result) {
 				if(!isNaN(result)) {
 					console.log("SUCCESS: Existing Artifact Saved");
+					if(redirectHome) {
+						window.location.replace("/single-project/?projectID=92&destination=artifacts");
+					}
 				} else {
 					console.log('Error adding node.');
 				}
@@ -684,6 +705,9 @@ abbr.editing {
 			$.post("/api/standard.php/artifacts", formData, function(result) {
 				if(!isNaN(result)) {
 					console.log("SUCCESS: Artifact Saved");
+					if(redirectHome) {
+						window.location.replace("/single-project/?projectID=92&destination=artifacts");
+					}
 				} else {
 					console.log('Error adding node.');
 				}
@@ -705,22 +729,20 @@ abbr.editing {
 			$.put("/api/standard.php/artifacts/" + artifactID, formData, function(result) {
 				if(!isNaN(result)) {
 					console.log("SUCCESS: Codes for Artifact Saved");
-					alert("Success: Codes Saved");
+					// alert("Success: Codes Saved");
 				} else {
 					console.log('Error saving artifact codes.');
 				}
 			});
-		} 
-
-		disableBasicFields();
+		}
 	}
 
-	function disableBasicFields() {
-		globalArtifactCodes.attr('disabled', 'true');
-		deafultProjectingNode.attr('disabled', 'true');
-		$('#artifactName').attr('disabled', 'true');
-		beginCodingButton.attr('disabled', 'true');
-		saveCodingButton.removeAttr('disabled');
-	}
+	// function disableBasicFields() {
+	// 	globalArtifactCodes.attr('disabled', 'true');
+	// 	deafultProjectingNode.attr('disabled', 'true');
+	// 	$('#artifactName').attr('disabled', 'true');
+	// 	beginCodingButton.attr('disabled', 'true');
+	// 	saveCodingButton.removeAttr('disabled');
+	// }
 
 </script>
