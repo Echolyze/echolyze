@@ -1,18 +1,8 @@
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar ">
     <section class="sidebar">
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="/lib/AdminLTE-2.3.6/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>FirstName LastName</p>
-          <a href="#">usernameOfUserHere</a>
-        </div>
-      </div>
-
       <div class="callout callout-info projects-listing" style="margin:10px">
-        <h4>Welcome!</h4>
+        <h4>Welcome Test Account!</h4>
         <p>Please select a project to continue.</p>
       </div>
 

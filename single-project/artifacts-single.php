@@ -292,6 +292,7 @@ abbr.editing {
 	var allNodes = [];
 	var currentlySelectedObject;
 	var artifactIDGlobal = '';
+	var fragmentsInDB = null;
 
 	var latestArtifactBodyContents = '';
 
@@ -347,12 +348,13 @@ abbr.editing {
 				data: allCodes
 			});
 			loadArtifact();
+			loadAllFragments();
 		});
 	}
 	fetchCodes();
 
 
-	// *************** Load Existing Artifact ***************
+	// *************** Load Existing Artifact & Existing Fragments ***************
 	function loadArtifact() {
 		var artifactID = gup('rid');
 		artifactIDGlobal = artifactID;
@@ -375,6 +377,12 @@ abbr.editing {
 			artifactBodyTabInitialSetup();
 		}
 	}
+	// *************** All Fragments for Project ***************
+	function loadAllFragments() {
+		$.get("/api/standard.php/fragments?filter=related_artifact,eq," + gup('rid'), function(data) {
+			fragmentsInDB = data.fragments;
+		});
+	};
 	
 
 	// *************** Artifact Body Tabs Management ***************
@@ -770,6 +778,9 @@ abbr.editing {
 		// Determine how many steps we have to save...
 		var allFragmentsInBody = $(latestArtifactBodyContents).find('abbr');
 		savingTotalSteps = savingTotalSteps + allFragmentsInBody.length;
+		if (fragmentsInDB.records) {
+			savingTotalSteps = savingTotalSteps + fragmentsInDB.records.length;
+		}
 
 		var globalCodesFormatted = '';
 		if ($('#globalArtifactCodes').val()) {
@@ -815,20 +826,39 @@ abbr.editing {
 			});
 		}
 
-		// @TODO: Mass delete any fragments in the fragments table for this artifact, than re add them (you'll need a separate function)
+		cleanFragmentsAndSaveNewIndividualFragments(allFragmentsInBody);
+
+		// if(redirectHome) {
+		// 	window.location.replace("/single-project/?projectID=92&destination=artifacts");
+		// }
+	}
+	function cleanFragmentsAndSaveNewIndividualFragments(allFragmentsInBody) {
+		for (var i = 0; i < fragmentsInDB.records.length; i++) {
+			deleteSingleFragmentFromDB(fragmentsInDB.records[i][0]);
+		}
 
 		// Save individual fragments
 		for (var i = 0; i < allFragmentsInBody.length; i++) {
 			saveSingleFragmentToDB(allFragmentsInBody[i]);
 		}
-		// if(redirectHome) {
-		// 	window.location.replace("/single-project/?projectID=92&destination=artifacts");
-		// }
 	}
 
+	function deleteSingleFragmentFromDB(dbFragmentPK) {
+		$.delete("/api/standard.php/fragments/" + dbFragmentPK, function(result) {
+			if(!isNaN(result)) {
+				console.log("SUCCESS: DB Fragment Element Deleted");
+				savingExecutionHistory.append('<li>Fragment PK #' + dbFragmentPK + ' deleted successfully.</li>');
+				updateCompletedStepsByOne();
+			} else {
+				console.log('Error deleting fragment PK # dbFragmentPK.');
+				savingExecutionHistory.append('<li>Error Deleting Fragment PK #' + dbFragmentPK + '.</li>');
+			}
+		});
+	}
 	function saveSingleFragmentToDB(fragmentElement) {
 		var fragmentElementFormData = {
 			related_artifact: gup('rid'),
+			related_project: currentProject,
 			inline_id: $(fragmentElement).attr('id'),
 			codes: $(fragmentElement).attr('data-codes'),
 			nodeA: $(fragmentElement).attr('data-nodeA'),

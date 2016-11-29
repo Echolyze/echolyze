@@ -9,13 +9,11 @@
 				<table id="allArtifactsTable" class="table table-bordered">
 					<tbody>
 						<tr>
-							<th style="width:40%">Name</th>
-							<th style="width:60%"></th>
+							<th style="width:80%">Name</th>
 							<th>Actions</th>
 						</tr>
 						<tr id="singleArtifactTemplate" class="phils-js-framework-template">
 							<td class="artifact-name"></td>
-							<td class="artifact-description"></td>
 							<td>
 								<div style="display:flex" class="btn-group btn-block">
 									<a type="button" class="edit-artifact-btn btn btn-default btn-xs">Edit</a>
@@ -44,16 +42,15 @@
 	function loadArticlesArtifacts() {
 		$.get("/api/standard.php/artifacts?transform=1", function(data) {
 			for (var i = 0; i < data.artifacts.length; i++) {
-				insertNewArtifactRow(data.artifacts[i].id, data.artifacts[i].name, data.artifacts[i].description);
+				insertNewArtifactRow(data.artifacts[i].id, data.artifacts[i].name);
 			}
 		});
 	}
-	function insertNewArtifactRow(id, name, description) {
+	function insertNewArtifactRow(id, name) {
 		var existingSingleArtifact = $('#singleArtifactTemplate');
 		var newArtifactToAdd = existingSingleArtifact.clone();
 		newArtifactToAdd.removeClass('phils-js-framework-template');
 		newArtifactToAdd.find('.artifact-name').text(name);
-		newArtifactToAdd.children('.artifact-description').text(description);
 		newArtifactToAdd.find('.delete-artifact-btn').click(function(){
 			deleteArtifact(id);
 		});

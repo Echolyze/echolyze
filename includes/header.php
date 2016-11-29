@@ -14,9 +14,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="/lib/AdminLTE-2.3.6/plugins/select2/select2.min.css">
+  <!-- Datatables -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/lib/AdminLTE-2.3.6/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="/lib/AdminLTE-2.3.6/dist/css/skins/skin-blue.min.css">
+  <!-- Visualizations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.17.0/vis.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -64,6 +69,9 @@
     .sidebar-header-pe {
       text-transform: uppercase;
     }
+    .navbar-nav>.user-menu>.dropdown-menu {
+      width: 100px;
+    }
   </style>
   <!-- REQUIRED JS SCRIPTS -->
 
@@ -75,6 +83,20 @@
   <script src="/lib/AdminLTE-2.3.6/dist/js/app.min.js"></script>
   <!-- Select2 -->
   <script src="/lib/AdminLTE-2.3.6/plugins/select2/select2.full.min.js"></script>
+  <!-- DataTables -->
+  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+  <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+  <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+  <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+  <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+  <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.colVis.min.js"></script>
+  <!-- Visualizations  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.17.0/vis.min.js"></script>
+    <script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>
 
   <script type="text/javascript">
     function gup( name ) {
@@ -109,6 +131,10 @@ jQuery.each( [ "put", "delete" ], function( i, method ) {
 
 
   </script>
+
+  <!-- Phil's Common JS -->
+  <script src="/lib/object-watch.js"></script>
+  <script src="/single-project/single_project_utils.js"></script>
 
 </head>
 <!--
@@ -158,43 +184,12 @@ desired effect
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <!-- The user image in the navbar-->
-              <img src="/lib/AdminLTE-2.3.6/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">FirstName LastName</span>
+              <span class="hidden-xs">Current User: Test Account</span>
             </a>
             <ul class="dropdown-menu">
-              <!-- The user image in the menu -->
-              <li class="user-header">
-                <img src="/lib/AdminLTE-2.3.6/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                <p>
-                  FirstName LastName
-                </p>
-              </li>
-              <!-- Menu Body -->
-              <!-- <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-              </li> -->
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
+            <li><a href="#" class="btn btn-default btn-flat">Profile</a></li>
+            <li><a href="/index.php" class="btn btn-default btn-flat">Sign Out</a></li>
             </ul>
           </li>
         </ul>

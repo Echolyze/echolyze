@@ -5,7 +5,7 @@
       <!-- Anything you want -->
     </div>
     <!-- Default to the left -->
-    Footer Content Here
+    <!-- Footer Content Here -->
     <!-- <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved. -->
   </footer>
 
