@@ -3,6 +3,19 @@
 
 //var_dump($_SERVER['REQUEST_METHOD'],$_SERVER['PATH_INFO']); die();
 
+
+// include 'app/page/header.php';
+// var_dump($user);
+
+session_start();
+
+if (!$_SESSION['userData']['signed']) {
+	echo 'not authenticated';
+	die();
+}
+
+
+
 interface DatabaseInterface {
 	public function getSql($name);
 	public function connect($hostname,$username,$password,$database,$port,$socket,$charset);

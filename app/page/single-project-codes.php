@@ -96,14 +96,36 @@
 	var editCodeForm = $('#editCodeForm');
 	editCodeBox.hide();
 
+	var allCodesForCodes = []
+
+	// ******************** Waiting for Load *************************
+	var interval = setInterval(function() {
+	    if ((typeof util_AllNodes == 'undefined') || 
+	    	(typeof util_AllCodes == 'undefined') || 
+	    	(typeof util_AllArtifacts == 'undefined') || 
+	    	(typeof util_AllFragments == 'undefined') || 
+	    	(typeof util_BasicProjectDetails == 'undefined')) return;
+	    clearInterval(interval);
+
+	    console.log('Nodes, Artifacts, Fragments, and Codes Loaded');
+	    initNodes()
+	    globalLoadingIndicator_Clear();
+
+	}, 10);
+
+	function initNodes() {
+		loadAllCodes();
+	}
 
 	// *************** All Codes for Project ***************
 	function loadAllCodes() {
-		$.get("/api/standard.php/codes?transform=1", function(data) {
-			for (var i = 0; i < data.codes.length; i++) {
-				insertNewCodeRow(data.codes[i].id, data.codes[i].name, data.codes[i].description);
-			}
-		});
+		var codesCopying = jQuery.extend(true, {}, util_AllCodes);
+		$.each(codesCopying, function(index, value) {
+			allCodesForCodes.push(value);
+		}); 
+		for (var i = 0; i < allCodesForCodes.length; i++) {
+			insertNewCodeRow(allCodesForCodes[i].id, allCodesForCodes[i].name, allCodesForCodes[i].description);
+		}
 	}
 	function insertNewCodeRow(id, name, description) {
 		var existingSingleCode = $('#singleCodeTemplate');
@@ -127,18 +149,20 @@
 		newCodeToAdd.attr('id', '');
 		allCodesTable.children('tbody').append(newCodeToAdd);
 	}
-	loadAllCodes();
-
 
 	// *************** Add Code ***************
 	addCodeForm.submit(function(event){
+		event.preventDefault();
 		var formData = {
 			name: $('#addCodeNameInput').val(),
 			description: $('#addCodeDescriptionInput').val(),
 			related_project: currentProject
 		}
 
-		// @TODO: Error Validation
+		if (!formData.name){
+			throwErrorOnField('addCodeNameInput','A code name is required.','padding-left:15px');
+			return;
+		}
 
 		$.post("/api/standard.php/codes", formData, function(result) {
 			if(!isNaN(result)) {
@@ -176,12 +200,16 @@
 		editCodeBox.find('#editCodeDescriptionInput').val(currentCodeDescription);
 
 		editCodeForm.submit(function(event){
+			event.preventDefault();
 			var formData = {
 				name: $('#editCodeNameInput').val(),
 				description: $('#editCodeDescriptionInput').val(),
 			}
 
-			// @TODO: Error Validation
+			if (!formData.name){
+				throwErrorOnField('editCodeNameInput','A code name is required.','padding-left:15px');
+				return;
+			}
 
 			$.put("/api/standard.php/codes/" + id, formData, function(result) {
 				if(!isNaN(result)) {

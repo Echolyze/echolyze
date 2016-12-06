@@ -1,6 +1,6 @@
 <?php
 	//If user is not signed in refirect
-	if(!$user->isSigned()) redirect("../login");
+	if(!$user->isSigned()) redirect("../app/login");
 	echo '<script>console.log("auth is checked, good to go!");</script>';
 
 	include 'app-includes/header.php';
@@ -16,13 +16,16 @@
 </style>
 
 <div class="content-wrapper">
-	<section class="content-header content-header-pe">
+	<?php
+	include 'app-includes/global_loading.php';
+	?>
+	<section class="content-header content-header-pe hidden">
 		<h1 class="col-xs-6 omega">Projects</h1>
 		<div class="col-xs-6 alpha">
 			<button id="addProjectCTA" type="button" class="btn btn-primary pull-right">Add Project</button>
 		</div>
 	</section>
-	<section class="content">
+	<section class="content hidden">
 		<div class="row">
 		<div class="col-xs-12">
 			<div id="addProjectBox" class="box box-primary">
@@ -52,12 +55,15 @@
 			</div>
 		</div>
 		<div id="projectListings" class="col-xs-12">
+			<div id="noProjectsMessage" class="hidden callout callout-info projects-listing" style="margin-left:0px; margin-right: 0px">
+	  			<h4>Welcome <?php echo $user->first_name . ' ' . $user->last_name ?>!</h4>
+	  			<p>Thanks for using Echolyze! Looks like you haven't created any projects yet. To get started using Echolyze, please <a style="cursor:pointer" id="createProjectInMessage">create your first project</a>.</p>
+	  		</div>
 			<div id="singleProjectTemplate" data-project-id="" class="box phil-box-project phils-js-framework-template">
   				<div class="box-header with-border">
     				<a href="" style="color: #444; display: block"><h3 class="box-title"></h3></a>
   				</div>
 				<div class="box-body">
-					Nulla ut mi erat. Maecenas euismod mauris et tempus fringilla. Nulla facilisi. Etiam tortor augue, imperdiet sit amet pulvinar sit amet, porttitor at purus. Mauris molestie eget arcu nec rutrum. Cras non tempor nibh. In luctus sit amet neque ut eleifend.
 				</div>
 			</div>
 		</div>
@@ -79,13 +85,21 @@ $(document).ready(function () {
 	var addProject_ProjectDescriptionInput = $('#projectDescriptionInput');
 	var singleProjectListing = $('#singleProjectTemplate');
 	var allProjectListings = $('#projectListings');
+	var noProjectsMessage = $('#noProjectsMessage');
+
+	// Hide Add Project Box by Default
+	addProjectBox.hide();
 
 
 	// *************** All Project Listings ***************
 	function loadAllProjects() {
-		$.get("/api/standard.php/projects?transform=1&filter=deleted,eq,0", function(data) {
+		$.get("/api/standard.php/projects?transform=1&filter=deleted,eq,0&filter=related_owner,eq," + CURRENTUSER_ID, function(data) {
+			globalLoadingIndicator_Clear();
 			for (var i = 0; i < data.projects.length; i++) {
 				insertNewProject(data.projects[i].id, data.projects[i].name, data.projects[i].description)
+			}
+			if (data.projects.length == 0) {
+				noProjectsMessage.removeClass('hidden');
 			}
 		});
 	}
@@ -93,13 +107,13 @@ $(document).ready(function () {
 		var projectToAdd = singleProjectListing.clone();
 		projectToAdd.removeClass('phils-js-framework-template');
 		projectToAdd.find('.box-title').text(pName);
-		projectToAdd.find('.enter-project-link').attr('href', '../project/?projectID=' + pID);
-		projectToAdd.find('.box-title').parent('a').attr('href', '../project/?projectID=' + pID);
+		projectToAdd.find('.enter-project-link').attr('href', '/app/project/?projectID=' + pID);
+		projectToAdd.find('.box-title').parent('a').attr('href', '/app/project/?projectID=' + pID);
 		projectToAdd.children('.box-body').text(pDescription);
 		projectToAdd.attr('data-project-id', pID);
 
 		projectToAdd.click(function() {
-			window.location = '../project/?projectID=' + pID;
+			window.location = '/app/project/?projectID=' + pID;
 			return false;
 		});
 
@@ -110,31 +124,43 @@ $(document).ready(function () {
 
 
 	// *************** Add Project Box ***************
-	// Hide Add Project Box by Default
-	addProjectBox.hide();
 	// Show addProjectBox on click
+	$('#createProjectInMessage').click(function(e){
+		startAddingProject();
+		noProjectsMessage.addClass('hidden');
+	})
 	addProjectCTA.click(function(){
+		startAddingProject();
+		noProjectsMessage.addClass('hidden');
+	})
+	function startAddingProject() {
 		addProjectCTA.addClass('disabled');
 		addProjectBox.show();
 		addProject_ProjectNameInput.focus();
-	})
+	}
 	addProjectButton_Cancel.click(function(){
 		addProjectCTA.blur();
 		addProjectCTA.removeClass('disabled');
 		addProjectBox.hide();
 	})
-	addProjectForm.submit(function(){
+	addProjectForm.submit(function(e){
+		e.preventDefault();
 		var formData = {
 			name: $('#projectNameInput').val(),
 			description: $('#projectDescriptionInput').val(),
+			related_owner: CURRENTUSER_ID
 		}
 
-		// @TODO: Error Validation
+		if (!formData.name){
+			throwErrorOnField('projectNameInput','A project name is required.','padding-left:15px');
+			return;
+		}
 
 		$.post("/api/standard.php/projects", formData, function(result) {
 			if(!isNaN(result)) {
 				insertNewProject(result, formData.name, formData.description);
-				addProjectButton_Cancel.trigger('click');
+				window.location = '/app/project/?projectID=' + result;
+				// addProjectButton_Cancel.trigger('click');
 			} else {
 				console.log('Error adding project.');
 			}

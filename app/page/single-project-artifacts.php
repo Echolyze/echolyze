@@ -37,14 +37,29 @@
 	var allArtifactsTable = $('#allArtifactsTable');
 	$("#addNewArtifactButton").attr('href', '/app/project/?projectID=' + currentProject + '&destination=artifacts-single')
 
+	// ******************** Waiting for Load *************************
+	var interval = setInterval(function() {
+	    if ((typeof util_AllNodes == 'undefined') || 
+	    	(typeof util_AllCodes == 'undefined') || 
+	    	(typeof util_AllArtifacts == 'undefined') || 
+	    	(typeof util_AllFragments == 'undefined') || 
+	    	(typeof util_BasicProjectDetails == 'undefined')) return;
+	    clearInterval(interval);
 
+	    console.log('Nodes, Artifacts, Fragments, and Codes Loaded');
+	    initProjectArtifacts();
+	    globalLoadingIndicator_Clear();
+
+	}, 10);
+
+	function initProjectArtifacts() {
+		loadArticlesArtifacts();
+	}
 	// *************** All Artifacts for Project ***************
 	function loadArticlesArtifacts() {
-		$.get("/api/standard.php/artifacts?transform=1", function(data) {
-			for (var i = 0; i < data.artifacts.length; i++) {
-				insertNewArtifactRow(data.artifacts[i].id, data.artifacts[i].name);
-			}
-		});
+		for (var i = 0; i < util_AllArtifacts.length; i++) {
+			insertNewArtifactRow(util_AllArtifacts[i].id, util_AllArtifacts[i].name);
+		}
 	}
 	function insertNewArtifactRow(id, name) {
 		var existingSingleArtifact = $('#singleArtifactTemplate');
@@ -64,7 +79,6 @@
 		newArtifactToAdd.attr('id', '');
 		allArtifactsTable.children('tbody').append(newArtifactToAdd);
 	}
-	loadArticlesArtifacts();
 
 
 	// *************** Delete Artifact ***************

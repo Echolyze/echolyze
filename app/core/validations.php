@@ -11,10 +11,9 @@ $user->addValidation(
             'limit' => '0-15',
             'regEx' => '/\w+/'
         ),
-        'website'    => array(
-            'limit' => '0-50',
-            'regEx' => '@((https?://)?([-\w\.]+)+(:\d+)?(/([\w/_\.]*(\?\S+)?)?)?)@'
-        )
+        'username' => array(
+            'limit' => '0-100'
+            )
     )
 );
 

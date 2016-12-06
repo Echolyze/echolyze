@@ -48,9 +48,21 @@ function alertInjector(type, heading, contentHtml) {
 	$('body').append(toEnterAlertBox);
 }
 
-function throwErrorOnField(fieldID, messageContent) {
+function throwErrorOnField(fieldID, messageContent, customSpanCSS = '') {
 	var formGroup = $('#' + fieldID).closest('.form-group');
 	formGroup.addClass('has-error');
-	formGroup.append('<span class="help-block help-block-pe">' + messageContent + '</span>');
+	formGroup.append('<span class="help-block help-block-pe" style="' + customSpanCSS + '">' + messageContent + '</span>');
 }
 
+function globalLoadingIndicator_Clear() {
+	console.log('Clearing the Global Loading Indicator!');
+	$('#globalLoadingIndicator').addClass('hidden');
+	$('.content').removeClass('hidden');
+	$('.content-header').removeClass('hidden');
+}
+
+function globalLoadingIndicator_Show() {
+	$('#globalLoadingIndicator').removeClass('hidden');
+	$('.content').addClass('hidden');
+	$('.content-header').addClass('hidden');
+}

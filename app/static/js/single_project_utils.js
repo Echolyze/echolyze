@@ -3,6 +3,7 @@ var util_AllNodes = util_LoadAllNodes();
 var util_AllCodes = util_LoadAllCodes();
 var util_AllArtifacts = util_LoadAllArtifacts();
 var util_AllFragments = util_LoadAllFragments();
+var util_BasicProjectDetails = util_LoadBasicProjectDetails();
 
 // *************** LOAD DATA PARTICULAR TO PROJECT ***************
 function util_LoadAllCodes() {
@@ -25,6 +26,13 @@ function util_LoadAllFragments() {
 		util_AllFragments = data.fragments;
 	});
 };
+function util_LoadBasicProjectDetails() {
+	$.get("/api/standard.php/projects/" + util_CurrentProject, function(data) {
+		util_BasicProjectDetails = data;
+		// Update heading on page:
+		$('.single-project-name').text(data.name);
+	});
+}
 function provideNodesForSelect() {
 	var nodesForSelect = [];
 	for (var i = 0; i < util_AllNodes.length; i++) { // Adding child nodes:

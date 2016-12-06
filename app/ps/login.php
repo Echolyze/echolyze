@@ -9,14 +9,22 @@ if(count($_POST)){
      * for better value handling
      */
     $input = new \ptejada\uFlex\Collection($_POST);
+    // var_dump($input);
 
-	$user->login($input->Username, $input->Password, $input->auto);
+	$user->login($input->username, $input->password, $input->auto);
+
+	// echo $input->username . '</br></br>';
 
 	$errMsg = '';
 
 	if($user->log->hasError()){
 		$errMsg = $user->log->getErrors();
 		$errMsg = $errMsg[0];
+	}
+
+	$errors = $user->log->getErrors();
+	if (count($errors) == 0) {
+		redirect("../all-projects");
 	}
 
 	echo json_encode(array(

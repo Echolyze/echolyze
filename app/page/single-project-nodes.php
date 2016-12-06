@@ -111,24 +111,47 @@
 	var addNodeBox = $('#addNodeBox');
 	var editNodeBox = $('#editNodeBox');
 	var editNodeForm = $('#editNodeForm');
+
+	var nodesForNodes = [];
 	editNodeBox.hide();
 	
+	// ******************** Waiting for Load *************************
+	var interval = setInterval(function() {
+	    if ((typeof util_AllNodes == 'undefined') || 
+	    	(typeof util_AllCodes == 'undefined') || 
+	    	(typeof util_AllArtifacts == 'undefined') || 
+	    	(typeof util_AllFragments == 'undefined') || 
+	    	(typeof util_BasicProjectDetails == 'undefined')) return;
+	    clearInterval(interval);
+
+	    console.log('Nodes, Artifacts, Fragments, and Codes Loaded');
+	    initNodes();
+	    globalLoadingIndicator_Clear();
+
+	}, 10);
+
+	function initNodes() {
+		loadAllNodes();
+		updateAddEdit_ParentNode();
+	}
 
 	// *************** All Nodes for Project ***************
 	function loadAllNodes() {
-		$.get("/api/standard.php/nodes?transform=1", function(data) {
-			for (var i = 0; i < data.nodes.length; i++) {
-				if (!data.nodes[i].parent_node) {
-					insertNewNodeRow(data.nodes[i].id, data.nodes[i].name, data.nodes[i].description);
-				}
+		var nodesCopy = jQuery.extend(true, {}, util_AllNodes);
+		$.each(nodesCopy, function(index, value) {
+			nodesForNodes.push(value);
+		}); 
+		for (var i = 0; i < nodesForNodes.length; i++) {
+			if (!nodesForNodes[i].parent_node) {
+				insertNewNodeRow(nodesForNodes[i].id, nodesForNodes[i].name, nodesForNodes[i].description);
 			}
-			// Do all the nodes that are children of another node after we have already inserted the parents...
-			for (var i = 0; i < data.nodes.length; i++) {
-				if (data.nodes[i].parent_node) {
-					insertNewNodeRow(data.nodes[i].id, data.nodes[i].name, data.nodes[i].description, data.nodes[i].parent_node);
-				}
+		}
+		// Do all the nodes that are children of another node after we have already inserted the parents...
+		for (var i = 0; i < nodesForNodes.length; i++) {
+			if (nodesForNodes[i].parent_node) {
+				insertNewNodeRow(nodesForNodes[i].id, nodesForNodes[i].name, nodesForNodes[i].description, nodesForNodes[i].parent_node);
 			}
-		});
+		}
 	}
 	function insertNewNodeRow(id, name, description, parentNode) {
 		// console.log(id + ' ' + name);
@@ -161,31 +184,27 @@
 			allNodesTable.children('tbody').append(newNodeToAdd);
 		}
 	}
-	loadAllNodes();
-	updateAddEdit_ParentNode();
-
 
 	function updateAddEdit_ParentNode() {
 		var addNodeParentNodeSelect = $('#parentAddNodeInput');
 		var editNodeParentNodeSelect = $('#parentEditNodeInput');
 		addNodeParentNodeSelect.empty();
 		editNodeParentNodeSelect.empty();
-		$.get("/api/standard.php/nodes?transform=1", function(data) {
-			addNodeParentNodeSelect.append('<option value="">No Parent</option>');
-			editNodeParentNodeSelect.append('<option value="">No Parent</option>');
-			for (var i = 0; i < data.nodes.length; i++) {
-				if (data.nodes[i].parent_node == 0) {
-					addNodeParentNodeSelect.append('<option value="' + data.nodes[i].id + '">' + data.nodes[i].name  + '</option>');
-					editNodeParentNodeSelect.append('<option value="' + data.nodes[i].id + '">' + data.nodes[i].name  + '</option>');
-				}
+		addNodeParentNodeSelect.append('<option value="">No Parent</option>');
+		editNodeParentNodeSelect.append('<option value="">No Parent</option>');
+		for (var i = 0; i < nodesForNodes.length; i++) {
+			if (nodesForNodes[i].parent_node == 0) {
+				addNodeParentNodeSelect.append('<option value="' + nodesForNodes[i].id + '">' + nodesForNodes[i].name  + '</option>');
+				editNodeParentNodeSelect.append('<option value="' + nodesForNodes[i].id + '">' + nodesForNodes[i].name  + '</option>');
 			}
-			addNodeParentNodeSelect.select2();
-			editNodeParentNodeSelect.select2();
-		});
+		}
+		addNodeParentNodeSelect.select2();
+		editNodeParentNodeSelect.select2();
 	}
 
 	// *************** Add Node ***************
 	addNodeForm.submit(function(event){
+		event.preventDefault();
 		var formData = {
 			name: $('#addNodeNameInput').val(),
 			description: $('#addNodeDescriptionInput').val(),
@@ -193,7 +212,10 @@
 			parent_node: $('#parentAddNodeInput').val()
 		}
 
-		// @TODO: Error Validation
+		if (!formData.name){
+			throwErrorOnField('addNodeNameInput','A node name is required.','padding-left:15px');
+			return;
+		}
 
 		$.post("/api/standard.php/nodes", formData, function(result) {
 			if(!isNaN(result)) {
@@ -226,13 +248,17 @@
 		editNodeBox.find('#editNodeDescriptionInput').val(currentNodeDescription);
 
 		editNodeForm.submit(function(event){
+			event.preventDefault();
 			var formData = {
 				name: $('#editNodeNameInput').val(),
 				description: $('#editNodeDescriptionInput').val(),
 				parent_node: $('#parentEditNodeInput').val()
 			}
 
-			// @TODO: Error Validation
+			if (!formData.name){
+				throwErrorOnField('editNodeNameInput','A node name is required.','padding-left:15px');
+				return;
+			}
 
 			$.put("/api/standard.php/nodes/" + id, formData, function(result) {
 				if(!isNaN(result)) {

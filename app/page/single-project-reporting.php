@@ -126,11 +126,16 @@
 
 	// ******************** Waiting for Load *************************
 	var interval = setInterval(function() {
-	    if ((typeof util_AllNodes == 'undefined') || (typeof util_AllCodes == 'undefined') || (typeof util_AllArtifacts == 'undefined') || (typeof util_AllFragments == 'undefined')) return;
+	    if ((typeof util_AllNodes == 'undefined') || 
+	    	(typeof util_AllCodes == 'undefined') || 
+	    	(typeof util_AllArtifacts == 'undefined') || 
+	    	(typeof util_AllFragments == 'undefined') || 
+	    	(typeof util_BasicProjectDetails == 'undefined')) return;
 	    clearInterval(interval);
 
 	    console.log('Nodes, Artifacts, Fragments, and Codes Loaded');
-	    initReporting()
+	    initReporting();
+	    globalLoadingIndicator_Clear();
 
 	}, 10);
 
@@ -357,34 +362,43 @@
 				data: {
 					id: util_AllNodes[i].id,
 					name: util_AllNodes[i].name,
-					faveShape: 'rectangle',
-					faveColor: '#3c8dbc'
+					faveShape: 'rectangle'
 				}
 			}
 			nodesArray.push(singleNode);
 			for (var k = 0; k < util_AllNodes.length; k++) {
 				var netValueCalc = directedGraphMatrix_Matrix[util_AllNodes[i].id][util_AllNodes[k].id].positive.count - directedGraphMatrix_Matrix[util_AllNodes[i].id][util_AllNodes[k].id].negative.count;
-				var positiveCounts = directedGraphMatrix_Matrix[util_AllNodes[i].id][util_AllNodes[k].id].positive.count * 10;
+				var positiveCounts = directedGraphMatrix_Matrix[util_AllNodes[i].id][util_AllNodes[k].id].positive.count;
 				var negativeCounts = directedGraphMatrix_Matrix[util_AllNodes[i].id][util_AllNodes[k].id].negative.count;
 
 				if (positiveCounts > 0) {
+					var edgeWordLabel = positiveCounts + ' fragment';
+					if (positiveCounts > 1) {
+						edgeWordLabel = positiveCounts + ' fragments';
+					}
 					singleEdge = {
 						data: {
 							source: util_AllNodes[i].id,
 							target: util_AllNodes[k].id,
-							strength: positiveCounts,
-							faveColor: '#3c8dbc'
+							strength: (positiveCounts * 2),
+							faveColor: '#00d44d',
+							label: edgeWordLabel
 						}
 					}
 					edgesArray.push(singleEdge);
 				}
 				if (negativeCounts > 0) {
+					var edgeWordLabel = negativeCounts + ' fragment';
+					if (negativeCounts > 1) {
+						edgeWordLabel = negativeCounts + ' fragments';
+					}
 					singleEdge = {
 						data: {
 							source: util_AllNodes[i].id,
 							target: util_AllNodes[k].id,
-							strength: negativeCounts,
-							faveColor: '#d33724'
+							strength: (negativeCounts * 2),
+							faveColor: '#d33724',
+							label: edgeWordLabel
 						}
 					}
 					edgesArray.push(singleEdge);
@@ -393,52 +407,47 @@
 		}
 		$('#cy').cytoscape({
 			layout: {
-				name: 'cose',
-				padding: 10,
-				randomize: true
+				name: 'circle',
+				padding: 25,
+				randomize: false,
+				avoidOverlapPadding: 30,
+				avoidOverlap: true
 			},
+			style: [
+			{
+				selector: 'node',
+				style: {
+					'shape': 'roundrectangle',
+					'width': '150px',
+					'height': '40px',
+					'content': 'data(name)',
+					'text-valign': 'center',
+					'background-color': '#3c8dbc',
+					'color': '#fff',
+					'font-size': 12
+				}
+			},
+			{
+				selector: 'edge',
+				style: {
+					'curve-style': 'bezier',
+					'text-rotation': 'autorotate',
+					'font-size': 10,
+					'opacity': 1,
+					'text-background-color': '#FFF',
+					'text-background-opacity': 0.8,
+					'text-background-shape': 'rectangle',
+					'width': 'data(strength)',
+					'target-arrow-shape': 'triangle',
+					'source-arrow-shape': '',
+					'line-color': 'data(faveColor)',
+					'source-arrow-color': 'data(faveColor)',
+					'target-arrow-color': 'data(faveColor)',
+					'label': 'data(label)',
 
-			style: cytoscape.stylesheet()
-			.selector('node')
-			.css({
-				'shape': 'roundrectangle',
-
-				'width': '150px',
-				'height': '40px',
-				'content': 'data(name)',
-				'text-valign': 'center',
-				'text-outline-width': 1,
-				'text-outline-color': 'data(faveColor)',
-				'background-color': 'data(faveColor)',
-				'color': '#fff',
-				'font-size': 12
-			})
-			.selector(':selected')
-			.css({
-				'border-width': 3,
-				'border-color': '#3c8dbc'
-			})
-			.selector('edge')
-			.css({
-				'curve-style': 'bezier',
-				'opacity': 0.666,
-				'width': 'data(strength)',
-				'target-arrow-shape': 'triangle',
-				'source-arrow-shape': '',
-				'line-color': 'data(faveColor)',
-				'source-arrow-color': 'data(faveColor)',
-				'target-arrow-color': 'data(faveColor)'
-			})
-			.selector('edge.questionable')
-			.css({
-				'line-style': 'dotted',
-				'target-arrow-shape': 'diamond'
-			})
-			.selector('.faded')
-			.css({
-				'opacity': 0.25,
-				'text-opacity': 0
-			}),
+				}
+			}
+			],
 			elements: {
 				nodes: nodesArray,
 				edges: edgesArray

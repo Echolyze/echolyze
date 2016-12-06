@@ -18,14 +18,9 @@
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar ">
   	<section class="sidebar">
-  		<div class="callout callout-info projects-listing" style="margin:10px">
-  			<h4>Welcome Test Account!</h4>
-  			<p>Please select a project to continue.</p>
-  		</div>
-
   		<!-- Sidebar Menu -->
-  		<ul id="projectListingBar" class="sidebar-menu sidebar-project-menu hidden">
-  			<li id=TopOfNav-PE class="header"><a href="/projects">PROJECTS</a></li>
+  		<ul id="projectListingBar" class="sidebar-menu sidebar-project-menu">
+  			<li id=TopOfNav-PE class="header"><a href="/app/all-projects/">PROJECTS</a></li>
   		</ul>
 
   	</section>
@@ -59,7 +54,7 @@
 
   // *************** All Projects for User ***************
   function loadAllProjectsAndSetupNav() {
-  	$.get("/api/standard.php/projects?transform=1&filter=deleted,eq,0", function(data) {
+  	$.get("/api/standard.php/projects?transform=1&filter=deleted,eq,0&filter=related_owner,eq," + CURRENTUSER_ID, function(data) {
   		for (var i = 0; i < data.projects.length; i++) {
   			var newProjectEntry = $("<li class='treeview'>");
   			newProjectEntry.loadTemplate(

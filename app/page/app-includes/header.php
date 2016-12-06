@@ -127,9 +127,9 @@
 							</a> 
 							<?php } ?>
 							<ul class="dropdown-menu">
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="/app/account">Profile</a></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="/app/account">Change Password</a></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo $base?>/ps/logout.php">Sign Out</a></li>
+								<li role="presentation"><a style="padding-top:5px; padding-bottom: 5px" role="menuitem" tabindex="-1" href="/app/account">Profile</a></li>
+								<li role="presentation"><a style="padding-top:5px; padding-bottom: 5px" role="menuitem" tabindex="-1" href="/app/account">Change Password</a></li>
+								<li role="presentation"><a style="padding-top:5px; padding-bottom: 5px" role="menuitem" tabindex="-1" href="<?php echo $base?>/ps/logout.php">Sign Out</a></li>
 							</ul>
 						</li>
 					</ul>

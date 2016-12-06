@@ -26,6 +26,22 @@ $user = new \ptejada\uFlex\User();
  * and update the class core itself in the future.
  */
  $user->config->userTableName = 'users';
+ $user->addValidation(
+    array(
+        'first_name' => array(
+            'limit' => '0-15',
+            'regEx' => '/\w+/'
+        ),
+        'last_name'  => array(
+            'limit' => '0-15',
+            'regEx' => '/\w+/'
+        ),
+        'Username' => array(
+            'limit' => '0-100'
+            )
+    )
+);
+
 //Starts the object by triggering the constructor
 $user->start();
 

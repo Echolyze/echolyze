@@ -34,28 +34,14 @@ if ($destination == 'nodes') {
 ?>
 
 <div class="content-wrapper">
-	<section class="content-header">
+	<?php include 'app-includes/global_loading.php'; ?>
+	<section class="content-header hidden">
 		<h1 class="col-xs-12 omega single-project-name"></h1>
 		<h2 class="col-xs-12 omega subheader-pe"><?php echo $destinationPageName ?></h2>
 	</section>
-	<section class="content">
+	<section class="content hidden">
 	<?php include $destinationInclude; ?>
 	</section>
 </div>
 
 <?php include '../includes/footer.php'; ?>
-
-<script type="text/javascript">
-	// Elements:
-	var singleProjectName = $('.single-project-name');
-
-	// Data:
-	var basicProjectDetails = [];
-	
-	// *************** Basic Project Details ***************
-	$.get("/api/standard.php/projects/" + gup('projectID'), function(data) {
-		basicProjectDetails = data;
-		singleProjectName.text(basicProjectDetails.name);
-	});
-
-</script>

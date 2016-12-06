@@ -143,8 +143,8 @@ abbr.editing {
 					</div>
 					<div class="col-sm-12 alpha omega">
 					<div class="form-group">
-						<label for="globalArtifactCodes" class="alpha omega col-sm-12">Global Artifact Codes:</label>
-							<select class="form-control select2 select2-hidden-accessible" multiple="multiple" style="width:100%" id="globalArtifactCodes" data-placeholder="Codes Applied to Entire Artifact">
+						<label for="globalArtifactCodes" class="alpha omega col-sm-12">Global Artifact Codes (Codes Applied to Entire Artifact):</label>
+							<select class="form-control select2 select2-hidden-accessible" multiple="multiple" style="width:100%" id="globalArtifactCodes" data-placeholder="No Codes">
 							</select>
 						</div>
 					</div>
@@ -302,53 +302,65 @@ abbr.editing {
 	// $('#editArtifactButton_Cancel').attr('href', '/app/project/?projectID=' + currentProject + '&destination=artifacts');
 	// $('#saveArtifactModal_ReturnLink').attr('href', '/app/project/?projectID=' + currentProject + '&destination=artifacts');
 
+	// ******************** Waiting for Load *************************
+	var interval = setInterval(function() {
+	    if ((typeof util_AllNodes == 'undefined') || 
+	    	(typeof util_AllCodes == 'undefined') || 
+	    	(typeof util_AllArtifacts == 'undefined') || 
+	    	(typeof util_AllFragments == 'undefined') || 
+	    	(typeof util_BasicProjectDetails == 'undefined')) return;
+	    clearInterval(interval);
+
+	    console.log('Nodes, Artifacts, Fragments, and Codes Loaded');
+	    initArtifacts_Single();
+
+	}, 10);
+
+	function initArtifacts_Single() {
+		loadAllNodes();
+		fetchCodes();
+		loadArtifact();
+		loadAllFragments();
+	}
 
 	// *************** All Nodes for Project ***************
 	function loadAllNodes() {
-		$.get("/api/standard.php/nodes?transform=1", function(data) {
-			for (var i = 0; i < data.nodes.length; i++) { // Adding child nodes:
-				if (data.nodes[i].parent_node != 0) {
-					for (var j = 0; j < data.nodes.length; j++) {
-						if (data.nodes[j].id == data.nodes[i].parent_node) { // Looping through to get parent information for label
-							allNodes.push({
-								id: data.nodes[i].id,
-								text: data.nodes[j].name + ' > ' + data.nodes[i].name
-							})
-						}
+		var loadingNodesCopied = util_AllNodes;
+		for (var i = 0; i < loadingNodesCopied.length; i++) { // Adding child nodes:
+			if (loadingNodesCopied[i].parent_node != 0) {
+				for (var j = 0; j < loadingNodesCopied.length; j++) {
+					if (loadingNodesCopied[j].id == loadingNodesCopied[i].parent_node) { // Looping through to get parent information for label
+						allNodes.push({
+							id: loadingNodesCopied[i].id,
+							text: loadingNodesCopied[j].name + ' > ' + loadingNodesCopied[i].name
+						})
 					}
-				} else { // Adding parent nodes:
-					allNodes.push({
-						id: data.nodes[i].id,
-						text: data.nodes[i].name
-					})
 				}
+			} else { // Adding parent nodes:
+				allNodes.push({
+					id: loadingNodesCopied[i].id,
+					text: loadingNodesCopied[i].name
+				})
 			}
+		}
 
-			allNodes.sort(function(a,b) {return (a.text > b.text) ? 1 : ((b.text > a.text) ? -1 : 0);} );
-		});
+		allNodes.sort(function(a,b) {return (a.text > b.text) ? 1 : ((b.text > a.text) ? -1 : 0);} );
 	}
-	loadAllNodes();
-
 
 	// *************** All Codes for Project ***************
 	function fetchCodes() {
-		$.get("/api/standard.php/codes?transform=1", function(data) {
-			for (var i = 0; i < data.codes.length; i++) {
-				allCodes.push({
-					id: data.codes[i].id,
-					text: data.codes[i].name
-				})
-			}
+		var loadingCodesCopied = util_AllCodes;
+		for (var i = 0; i < loadingCodesCopied.length; i++) {
+			allCodes.push({
+				id: loadingCodesCopied[i].id,
+				text: loadingCodesCopied[i].name
+			})
+		}
 
-			globalArtifactCodes.select2({
-				data: allCodes
-			});
-			loadArtifact();
-			loadAllFragments();
+		globalArtifactCodes.select2({
+			data: allCodes
 		});
 	}
-	fetchCodes();
-
 
 	// *************** Load Existing Artifact & Existing Fragments ***************
 	function loadArtifact() {
@@ -367,9 +379,11 @@ abbr.editing {
 					globalArtifactCodes.select2().val(globalCodesArrayd).trigger("change");
 					artifactBodyTabInitialSetup();
 				}
+				globalLoadingIndicator_Clear();
 			});
 		} else {
 			artifactBodyTabInitialSetup();
+			globalLoadingIndicator_Clear();
 		}
 	}
 	// *************** All Fragments for Project ***************

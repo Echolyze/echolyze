@@ -71,11 +71,13 @@
 	    	(typeof util_AllCodes == 'undefined') || 
 	    	(typeof util_AllArtifacts == 'undefined') || 
 	    	(typeof util_AllFragments == 'undefined') || 
-	    	(typeof basicProjectDetails == 'undefined')) return;
+	    	(typeof util_BasicProjectDetails == 'undefined')) return;
 	    clearInterval(interval);
 
+	    console.log(util_BasicProjectDetails);
 	    console.log('Everything Loaded!');
 	    initProjectHome();
+	    globalLoadingIndicator_Clear();
 
 	}, 100);
 
@@ -85,8 +87,8 @@
 
 	// Populate "Edit Project Details"
 	function setupEditProjectDetails() {
-		$('#editProjectNameInput').val(basicProjectDetails.name);
-		$('#editProjectDescriptionInput').val(basicProjectDetails.description);
+		$('#editProjectNameInput').val(util_BasicProjectDetails.name);
+		$('#editProjectDescriptionInput').val(util_BasicProjectDetails.description);
 	}
 	
 
@@ -139,8 +141,8 @@
 	})
 
 	$('#editProjectButton_Cancel').click(function() {
-		$('#editProjectNameInput').val(basicProjectDetails.name);
-		$('#editProjectDescriptionInput').val(basicProjectDetails.description);
+		$('#editProjectNameInput').val(util_BasicProjectDetails.name);
+		$('#editProjectDescriptionInput').val(util_BasicProjectDetails.description);
 	})
 
 
