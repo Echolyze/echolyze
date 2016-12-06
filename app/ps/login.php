@@ -27,10 +27,10 @@ if(count($_POST)){
 		redirect("../all-projects");
 	}
 
-	echo json_encode(array(
-		'error'    => $user->log->getErrors(),
-		'confirm'  => "You are now login as <b>$user->Username</b>",
-		'form'     => $user->log->getFormErrors(),
-	));
+	// echo json_encode(array(
+	// 	'error'    => $user->log->getErrors(),
+	// 	'confirm'  => "You are now login as <b>$user->Username</b>",
+	// 	'form'     => $user->log->getFormErrors(),
+	// ));
 }
 

@@ -24,11 +24,18 @@ if (count($_POST)) {
      */
     $user->register($input);
 
-    echo json_encode(
-        array(
-            'error'   => $user->log->getErrors(),
-            'confirm' => 'User Registered Successfully. You may login now!',
-            'form'    => $user->log->getFormErrors(),
-        )
-    );
+    $errors = $user->log->getErrors();
+    if (count($errors) == 0) {
+        echo '<script>alert("Successfully Registered. You will now be redirected to login.")</script>';
+        redirect("../all-projects");
+    }
+
+
+    // echo json_encode(
+    //     array(
+    //         'error'   => $user->log->getErrors(),
+    //         'confirm' => 'User Registered Successfully. You may login now!',
+    //         'form'    => $user->log->getFormErrors(),
+    //     )
+    // );
 }
