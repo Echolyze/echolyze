@@ -94,7 +94,7 @@
 	<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.colVis.min.js"></script>
 	<!-- Visualizations  -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.17.0/vis.min.js"></script>
-	<script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>
+	<script src="/lib/cytoscape.min.js"></script>
 	<!-- Phil's Common JS -->
 	<script src="<?php echo $base?>/static/js/phil_utils.js"></script>
 	<script src="<?php echo $base?>/static/js/single_project_utils.js"></script>
