@@ -117,7 +117,10 @@
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
 						<li>
-            				<a href="#">Help</a>
+            				<a target="_Blank" href="https://docs.google.com/forms/d/e/1FAIpQLSecAMHUxzKN1cVZCgjRGOcfAvjHI4mmku0nTRWanhRsTDp2qA/viewform">Feedback</a>
+          				</li>
+						<li>
+            				<a target="_Blank" href="https://github.com/Echolyze/echolyze/wiki/Common-Echolyze-Tasks">Help</a>
           				</li>
 						<li class="dropdown user user-menu">
 							<?php if($user->isSigned()) { ?>

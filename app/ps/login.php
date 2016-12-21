@@ -25,6 +25,8 @@ if(count($_POST)){
 	$errors = $user->log->getErrors();
 	if (count($errors) == 0) {
 		redirect("../all-projects");
+	} else {
+		echo 'Something doesn\'t seem right. Please try again.';
 	}
 
 	// echo json_encode(array(
