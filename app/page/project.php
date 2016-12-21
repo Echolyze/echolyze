@@ -12,7 +12,7 @@
 $projectID = $_GET['projectID'];
 $destination = $_GET['destination'];
 
-$destinationPageName = 'Project Dashboard';
+$destinationPageName = 'Project Details';
 $destinationInclude = 'single-project-home.php';
 
 if ($destination == 'nodes') {

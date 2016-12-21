@@ -42,6 +42,11 @@
 			$user->log->error('No need to update!');
 		}
 
+        $errors = $user->log->getErrors();
+        if (count($errors) == 0) {
+            redirect("../all-projects");
+        }
+
 		echo json_encode(array(
 			'error'    => $user->log->getErrors(),
 			'confirm'  => 'Account Updated!',

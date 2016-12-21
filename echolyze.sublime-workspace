@@ -4,6 +4,194 @@
 		"selected_items":
 		[
 			[
+				"util",
+				"util_BasicProjectDetails"
+			],
+			[
+				"uti",
+				"util_AllNodes"
+			],
+			[
+				"cur",
+				"CURRENTUSER_ID"
+			],
+			[
+				"form",
+				"formData"
+			],
+			[
+				"in",
+				"input"
+			],
+			[
+				"background",
+				"background-image"
+			],
+			[
+				"b",
+				"background"
+			],
+			[
+				"auth",
+				"authentication"
+			],
+			[
+				"page",
+				"fullPagePath"
+			],
+			[
+				"fu",
+				"fullPagePath"
+			],
+			[
+				"pag",
+				"pageInclude"
+			],
+			[
+				"reg",
+				"rectangle"
+			],
+			[
+				"num",
+				"numCodes"
+			],
+			[
+				"for",
+				"for\tfor (…) {…} (Improved Native For-Loop)"
+			],
+			[
+				"code",
+				"codeUsageAcrossArtifacts"
+			],
+			[
+				"coun",
+				"countOfCode"
+			],
+			[
+				"util_",
+				"util_AllArtifacts"
+			],
+			[
+				"artif",
+				"artifactIDPassed"
+			],
+			[
+				"art",
+				"artifacts"
+			],
+			[
+				"count",
+				"countCodeUsageInFragments"
+			],
+			[
+				"pas",
+				"passedCodes"
+			],
+			[
+				"frg",
+				"fragmentsPassed"
+			],
+			[
+				"fra",
+				"fragmentsPassed"
+			],
+			[
+				"fragments",
+				"Fragments"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"gro",
+				"groupingEnabled"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"u",
+				"util_AllFragments"
+			],
+			[
+				"pos",
+				"positiveNegative"
+			],
+			[
+				"node",
+				"nodeBPassed"
+			],
+			[
+				"n",
+				"nodeAPassed"
+			],
+			[
+				"matr",
+				"matrixMaker_Counter"
+			],
+			[
+				"me",
+				"messageContent"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"s",
+				"style\tAttr"
+			],
+			[
+				"succe",
+				"Successfully"
+			],
+			[
+				"arti",
+				"artifactIDGlobal"
+			],
+			[
+				"sa",
+				"savingTotalSteps"
+			],
+			[
+				"sav",
+				"savingCompletedSteps"
+			],
+			[
+				"savin",
+				"savingCompletedSteps"
+			],
+			[
+				"btn-",
+				"btn-default"
+			],
+			[
+				"upd",
+				"Updated"
+			],
+			[
+				"succ",
+				"Successfully"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"pro",
+				"projects"
+			],
+			[
+				"paddin",
+				"padding-top"
+			],
+			[
 				"wid",
 				"width"
 			],
@@ -20,16 +208,8 @@
 				"reportType"
 			],
 			[
-				"util",
-				"util_AllArtifacts"
-			],
-			[
 				"nodeA",
 				"nodeADetail"
-			],
-			[
-				"code",
-				"codesArrayPassed"
 			],
 			[
 				"codes",
@@ -48,10 +228,6 @@
 				"reportCodeFilterSelect"
 			],
 			[
-				"uti",
-				"util_AllNodes"
-			],
-			[
 				"run",
 				"runReportCreate"
 			],
@@ -68,16 +244,8 @@
 				"ellipse"
 			],
 			[
-				"node",
-				"nodesArray"
-			],
-			[
 				"ne",
 				"negativeCounts"
-			],
-			[
-				"pos",
-				"positiveCounts"
 			],
 			[
 				"ed",
@@ -104,36 +272,16 @@
 				"getNodeByID"
 			],
 			[
-				"matr",
-				"matrixResult"
-			],
-			[
 				"posi",
 				"postive"
-			],
-			[
-				"fu",
-				"futurePartialFragment"
 			],
 			[
 				"fi",
 				"filteredData_Fragments"
 			],
 			[
-				"fra",
-				"fragment"
-			],
-			[
-				"art",
-				"artifactHtmlBody"
-			],
-			[
 				"a",
 				"artifactToParse"
-			],
-			[
-				"n",
-				"nodeIDPassed"
 			],
 			[
 				"no",
@@ -142,10 +290,6 @@
 			[
 				"nodeB",
 				"nodeBasedReport"
-			],
-			[
-				"in",
-				"inline_id"
 			],
 			[
 				"data",
@@ -168,16 +312,8 @@
 				"deleteStringPKs"
 			],
 			[
-				"fun",
-				"fun\tFunction"
-			],
-			[
 				"related_",
 				"related_artifact"
-			],
-			[
-				"cur",
-				"currentProject"
 			],
 			[
 				"proger",
@@ -284,10 +420,6 @@
 				"font-family"
 			],
 			[
-				"padd",
-				"padding"
-			],
-			[
 				"ini",
 				"initStep1"
 			],
@@ -368,16 +500,8 @@
 				"globalCodes"
 			],
 			[
-				"artif",
-				"artifactID"
-			],
-			[
 				"glob",
 				"globalArtifactCodes"
-			],
-			[
-				"for",
-				"for\tfor (…) {…}"
 			],
 			[
 				"text",
@@ -390,167 +514,16 @@
 			[
 				"is",
 				"isCollapsed"
-			],
-			[
-				"A",
-				"Artifact"
-			],
-			[
-				"Proj",
-				"Projecting"
-			],
-			[
-				"co",
-				"color"
-			],
-			[
-				"pare",
-				"parent_node"
-			],
-			[
-				"inser",
-				"insertNewNodeRow"
-			],
-			[
-				"cr",
-				"currentNodeParent"
-			],
-			[
-				"bo",
-				"border-radius"
-			],
-			[
-				"padding-",
-				"padding-left"
-			],
-			[
-				"edit",
-				"editNodeBox"
-			],
-			[
-				"pro",
-				"project"
-			],
-			[
-				"des",
-				"destinationInclude"
-			],
-			[
-				"form",
-				"formData"
-			],
-			[
-				"te",
-				"text"
-			],
-			[
-				"print",
-				"print_r"
-			],
-			[
-				"upgr",
-				"upgradeGamesForEmails"
-			],
-			[
-				"arr",
-				"arrayOfEmails"
-			],
-			[
-				"res",
-				"result"
-			],
-			[
-				"par",
-				"parametersForQuery"
-			],
-			[
-				"str",
-				"stringOfEmails"
-			],
-			[
-				"row",
-				"rowCount"
-			],
-			[
-				"sales",
-				"salesforceAccounts"
-			],
-			[
-				"salesf",
-				"salesforceAccount"
-			],
-			[
-				"date",
-				"dateToCheck"
-			],
-			[
-				"pas",
-				"parsedName"
-			],
-			[
-				"email",
-				"email"
-			],
-			[
-				"l",
-				"length"
-			],
-			[
-				"ema",
-				"emailSplit"
-			],
-			[
-				"last",
-				"lastName"
-			],
-			[
-				"fir",
-				"firstName"
-			],
-			[
-				"account",
-				"account_id"
-			],
-			[
-				"edu",
-				"edu_account_assignment"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "single-project/index.php",
+			"file": "app/page/single-project-nodes.php",
 			"settings":
 			{
-				"buffer_size": 1743,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "includes/footer.php",
-			"settings":
-			{
-				"buffer_size": 381,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "includes/header.php",
-			"settings":
-			{
-				"buffer_size": 7770,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "single-project/reporting.php",
-			"settings":
-			{
-				"buffer_size": 20401,
+				"buffer_size": 11148,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -559,59 +532,123 @@
 			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 3281,
+				"buffer_size": 36,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "includes/leftnav.php",
+			"file": "app/page/project.php",
 			"settings":
 			{
-				"buffer_size": 2100,
+				"buffer_size": 1547,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "single-project/artifacts.php",
+			"file": "app/page/all-projects.php",
 			"settings":
 			{
-				"buffer_size": 2707,
+				"buffer_size": 5838,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/page/single-project-codes.php",
+			"settings":
+			{
+				"buffer_size": 7658,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "single-project/codes.php",
+			"file": "app/page/single-project-artifacts.php",
 			"settings":
 			{
-				"buffer_size": 6525,
+				"buffer_size": 4109,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "single-project/artifacts-single.php",
+			"file": "app/page/single-project-reporting.php",
 			"settings":
 			{
-				"buffer_size": 31362,
+				"buffer_size": 23959,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Reporting:\n- Fix Directed Graph\n- Add Wizard\n- Add Filtering (somehow)...",
+			"file": "app/page/register.php",
 			"settings":
 			{
-				"buffer_size": 73,
+				"buffer_size": 3282,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/ps/login.php",
+			"settings":
+			{
+				"buffer_size": 759,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/page/app-includes/header.php",
+			"settings":
+			{
+				"buffer_size": 5716,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 64 files for \"cytoscape.min.js\" (case sensitive)\n\n/Users/phileverson/Repos/School/echolyze/app/page/app-includes/header.php:\n   95  \t<!-- Visualizations  -->\n   96  \t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vis/4.17.0/vis.min.js\"></script>\n   97: \t<script src=\"/lib/cytoscape.min.js\"></script>\n   98  \t<!-- Phil's Common JS -->\n   99  \t<script src=\"<?php echo $base?>/static/js/phil_utils.js\"></script>\n\n1 match in 1 file\n",
+			"settings":
+			{
+				"buffer_size": 443,
 				"line_ending": "Unix",
-				"name": "Reporting:"
+				"name": "Find Results",
+				"scratch": true
 			}
 		},
 		{
-			"file": "single-project/single_project_utils.js",
+			"file": "app/ps/register.php",
 			"settings":
 			{
-				"buffer_size": 6234,
+				"buffer_size": 1255,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/page/single-project-artifacts-single.php",
+			"settings":
+			{
+				"buffer_size": 32670,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/static/js/single_project_utils.js",
+			"settings":
+			{
+				"buffer_size": 8106,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/static/js/phil_utils.js",
+			"settings":
+			{
+				"buffer_size": 1981,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -655,45 +692,89 @@
 	"expanded_folders":
 	[
 		"/Users/phileverson/Repos/School/echolyze",
-		"/Users/phileverson/Repos/School/echolyze/api",
-		"/Users/phileverson/Repos/School/echolyze/includes",
+		"/Users/phileverson/Repos/School/echolyze/app/core",
+		"/Users/phileverson/Repos/School/echolyze/app/page",
+		"/Users/phileverson/Repos/School/echolyze/app/page/account/update",
+		"/Users/phileverson/Repos/School/echolyze/app/page/app-includes",
+		"/Users/phileverson/Repos/School/echolyze/app/projects_phil",
+		"/Users/phileverson/Repos/School/echolyze/app/ps",
+		"/Users/phileverson/Repos/School/echolyze/app/static",
+		"/Users/phileverson/Repos/School/echolyze/app/static/img",
+		"/Users/phileverson/Repos/School/echolyze/app/static/js",
 		"/Users/phileverson/Repos/School/echolyze/lib",
-		"/Users/phileverson/Repos/School/echolyze/lib/AdminLTE-2.3.6",
-		"/Users/phileverson/Repos/School/echolyze/lib/AdminLTE-2.3.6/plugins/datatables",
-		"/Users/phileverson/Repos/School/echolyze/lib/AdminLTE-2.3.6/plugins/datatables/extensions",
-		"/Users/phileverson/Repos/School/echolyze/lib/AdminLTE-2.3.6/plugins/datatables/extensions/TableTools",
-		"/Users/phileverson/Repos/School/echolyze/lib/AdminLTE-2.3.6/plugins/datatables/extensions/TableTools/js",
-		"/Users/phileverson/Repos/School/echolyze/projects",
-		"/Users/phileverson/Repos/School/echolyze/single-project"
+		"/Users/phileverson/Repos/School/echolyze/lib/AdminLTE-2.3.6/bootstrap/css",
+		"/Users/phileverson/Repos/School/echolyze/lib/AdminLTE-2.3.6/build",
+		"/Users/phileverson/Repos/School/echolyze/lib/AdminLTE-2.3.6/pages",
+		"/Users/phileverson/Repos/School/echolyze/lib/AdminLTE-2.3.6/pages/examples"
 	],
 	"file_history":
 	[
-		"/Users/phileverson/Repos/School/echolyze/single-project/artifacts-single.php",
-		"/Users/phileverson/Repos/School/echolyze/lib/object-watch.js",
+		"/Users/phileverson/Repos/School/echolyze/app/page/single-project-home.php",
+		"/Users/phileverson/Repos/School/echolyze/app/static/js/phil_utils.js",
+		"/Users/phileverson/Repos/School/echolyze/app/page/header.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/app-includes/header.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/app-includes/leftnav.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/project.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/all-projects.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/app-includes/global_loading.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/single-project-codes.php",
+		"/Users/phileverson/Repos/School/echolyze/app/index_echolyze.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/footer.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/account.php",
+		"/Users/phileverson/Repos/School/echolyze/api/standard.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/single-project-nodes.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/single-project-reporting.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/login.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/register.php",
+		"/Users/phileverson/Repos/School/echolyze/app/core/validations.php",
+		"/Users/phileverson/Repos/School/echolyze/app/core/config.php",
+		"/Users/phileverson/Repos/School/echolyze/app/ps/login.php",
+		"/Users/phileverson/Repos/School/echolyze/app/core/autoload.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/api.php",
+		"/Users/phileverson/Repos/School/echolyze/app/index.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/single-project-artifacts-single.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/single-project-artifacts.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/projects.php",
+		"/Users/phileverson/Repos/School/echolyze/app/.htaccess",
+		"/Users/phileverson/Repos/School/echolyze/single-project/single_project_utils.js",
+		"/Users/phileverson/Repos/School/echolyze/app/page/test.php",
+		"/Users/phileverson/Repos/School/echolyze/app/projects_phil/index.php",
+		"/Users/phileverson/Repos/School/echolyze/app/page/secure/projects.php",
+		"/Users/phileverson/Repos/School/echolyze/.htaccess",
+		"/Users/phileverson/Repos/School/echolyze/single-project/index.php",
+		"/Users/phileverson/Repos/School/echolyze/single-project/nodes.php",
+		"/Users/phileverson/Repos/School/echolyze/includes/footer.php",
+		"/Users/phileverson/Repos/School/echolyze/includes/header.php",
+		"/Users/phileverson/Repos/School/echolyze/auth/core/config.php",
+		"/Users/phileverson/Repos/School/echolyze/lib/uFlex/autoload.php",
+		"/Users/phileverson/Repos/School/echolyze/auth/index.php",
+		"/Users/phileverson/Repos/School/echolyze/auth/.htaccess",
+		"/Users/phileverson/Repos/School/echolyze/lib/uFlex/demo/core/config.php",
+		"/Users/phileverson/Repos/School/echolyze/lib/uFlex/demo/ps/register.php",
+		"/Users/phileverson/Repos/School/echolyze/single-project/reporting.php",
+		"/Users/phileverson/Repos/School/echolyze/includes/leftnav.php",
 		"/Users/phileverson/Repos/School/echolyze/index.php",
+		"/Users/phileverson/Repos/School/echolyze/auth/core/autoload.php",
+		"/Users/phileverson/Repos/School/echolyze/projects/index.php",
+		"/Users/phileverson/Repos/School/echolyze/single-project/artifacts.php",
+		"/Users/phileverson/Repos/School/echolyze/single-project/codes.php",
+		"/Users/phileverson/Repos/School/echolyze/single-project/artifacts-single.php",
+		"/Users/phileverson/Repos/School/echolyze/auth/install/index.php",
+		"/Users/phileverson/Repos/School/echolyze/lib/object-watch.js",
 		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/settings.py",
 		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/settings-stagify.py",
 		"/Users/phileverson/GooseChaseDev/ZIPPER_ENV/gc_zipper/gc_zipper/settings.py",
-		"/Users/phileverson/Repos/School/echolyze/single-project/artifacts.php",
-		"/Users/phileverson/Repos/School/echolyze/single-project/nodes.php",
-		"/Users/phileverson/Repos/School/echolyze/includes/footer.php",
-		"/Users/phileverson/Repos/School/echolyze/single-project/index.php",
-		"/Users/phileverson/Repos/School/echolyze/includes/header.php",
 		"/Users/phileverson/Repos/School/echolyze/lib/ckeditor/plugins/abbr/dialogs/abbr.js",
 		"/Users/phileverson/Repos/School/echolyze/lib/ckeditor/config.js",
 		"/Users/phileverson/Repos/School/echolyze/lib/ckeditor/plugins/abbr/plugin.js",
 		"/Users/phileverson/Downloads/floating-tools-example/example.html",
-		"/Users/phileverson/Repos/School/echolyze/single-project/codes.php",
 		"/Users/phileverson/Repos/School/echolyze/lib/ckeditor/plugins/toolbar/plugin.js",
 		"/Users/phileverson/Repos/School/echolyze/lib/ckeditor/plugins/floating-tools/plugin.js",
 		"/Users/phileverson/Repos/School/echolyze/lib/ckeditor/plugins/abbr/ckeditor-plugin-insert-code.js",
 		"/Users/phileverson/Repos/School/echolyze/single-project/ckeditor-plugin-insert-code.js",
-		"/Users/phileverson/Repos/School/echolyze/projects/index.php",
 		"/Users/phileverson/Downloads/notification_new.json",
 		"/Users/phileverson/Dropbox/Phil/DB Queries/GamesWith2PlusParticipants.sql",
 		"/Users/phileverson/Repos/School/echolyze/index_original.php",
-		"/Users/phileverson/Repos/School/echolyze/api/standard.php",
-		"/Users/phileverson/Repos/School/echolyze/.htaccess",
 		"/Users/phileverson/Repos/School/echolyze/standard.php",
 		"/Users/phileverson/Repos/School/echolyze/api.php",
 		"/Users/phileverson/Downloads/AdminLTE-2.3.6/starter.html",
@@ -755,47 +836,7 @@
 		"/Users/phileverson/GooseChaseDev/goosechase-data-server/edu_account_assignment.html",
 		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/webportal/game_functions.py",
 		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/webportal/admin_functions.py",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/admin/admin-console.html",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/views.py",
-		"/Users/phileverson/GooseChaseDev/phil_tips_goosechase_dev.txt",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/admin/admin-game-row.html",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/webportal/views.py",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/stylesheets/sales-quote-review.scss",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/requirements.txt",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/dev_context.py",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/sales/BillingDetails.react.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/sales/QuoteReviewApp.react.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/sales/QuoteDetail.react.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/sales/AccountExecutive.react.js",
-		"/Users/phileverson/GooseChaseDev/goosechase-data-server/email_utilities.js",
-		"/Users/phileverson/Library/Caches/Cleanup At Startup/Transmit/19E43A91-9D7F-4883-9446-888D6253148A/terms_ymca_seattle_hkd.txt",
-		"/Users/phileverson/Library/Caches/Cleanup At Startup/Transmit/FDFE1354-A08E-4BDB-BEA9-9747A2BF769A/terms_ymca_seattle_hkd.txt",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/common/WebPortalApp.react.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/game/MyGamesApp.react.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/app.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/common/WPHeader.react.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/stylesheets/reskin/topbar.scss",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/stylesheets/reskin/vars.scss",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/webportal/home.html",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/common/WPReskinTopBar.react.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/game/EditGameApp.react.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/game/BrandingApp.react.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/game/GameList.react.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/sales/GameSpecDetail.react.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/model/sales/GameSpec.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/model/sales/Opportunity.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/constants/sales/SalesConstants.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/util/SalesforceUtil.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/webportal/sales-portal.html",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/constants/StateConstants.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/constants/submission/SubmissionConstants.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/sales/salesforceUtil.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/outputs/app.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/mobile/views.py",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/sales/QuoteReview.react.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/sales/PrimaryContactDetails.react.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/components/util/action-button/ActionButtonSimple.react.js",
-		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/static/flux/js/stores/user/UserStateStore.js"
+		"/Users/phileverson/GooseChaseDev/R_DEV10/goosechase_server/goosechase/website/templates/admin/admin-console.html"
 	],
 	"find":
 	{
@@ -806,6 +847,8 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/Users/phileverson/Repos/School/echolyze/app",
+			"/Users/phileverson/Repos/School/echolyze",
 			"<current file>",
 			"/Users/phileverson/Repos/School/echolyze",
 			"<current file>",
@@ -850,6 +893,23 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"cytoscape.min.js",
+			"loadAllFragments",
+			"$.get",
+			"params",
+			"16px",
+			"save",
+			"artifactIDGlobal",
+			"add",
+			"contin",
+			"deafultProjectingNode",
+			"default",
+			"saveCoding",
+			"modal",
+			"single",
+			"content-wrapper",
+			"TopOfNav-PE",
+			"single-project-name",
 			"select2",
 			"savingTot",
 			"saving",
@@ -960,24 +1020,7 @@
 			"Customer Approved",
 			"Closed Won",
 			"console",
-			"primaryContact",
-			"buttonState",
-			"errors",
-			"state.errors.",
-			"partici",
-			"start_date__c",
-			"startDate",
-			"end_date__c",
-			"errorMessages.endDate",
-			"errorMessages.startDate",
-			"new Game(",
-			"']",
-			"['",
-			"newEndDate",
-			"newStartDate",
-			"buildGameFromState",
-			"Game",
-			"console"
+			"primaryContact"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -985,6 +1028,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			">\n",
 			"showFragmentOptionsModal",
 			"Artifact",
 			"artifact",
@@ -1046,24 +1090,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 9,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "single-project/index.php",
+					"file": "app/page/single-project-nodes.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1743,
+						"buffer_size": 11148,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								690,
-								690
+								9435,
+								9435
 							]
 						],
 						"settings":
@@ -1072,55 +1116,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 4305.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "includes/footer.php",
+					"file": "index.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 381,
+						"buffer_size": 36,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								226,
-								226
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "includes/header.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7770,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7295,
-								7295
+								36,
+								36
 							]
 						],
 						"settings":
@@ -1130,91 +1146,206 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2223.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "single-project/reporting.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 20401,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3808,
-								3808
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 850.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "index.php",
+					"buffer": 2,
+					"file": "app/page/project.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3281,
+						"buffer_size": 1547,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2103,
-								2126
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 149.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "includes/leftnav.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2100,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								120,
-								120
+								1068,
+								1068
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/page/all-projects.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5838,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5486,
+								5356
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2173.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/page/single-project-codes.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7658,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5547,
+								5547
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3053.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/page/single-project-artifacts.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4109,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2721,
+								2721
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1118.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/page/single-project-reporting.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 23959,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16966,
+								16966
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7919.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/page/register.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3282,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/ps/login.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 759,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								755,
+								562
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1224,118 +1355,137 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "single-project/artifacts.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2707,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								561,
-								561
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "single-project/codes.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6525,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1784,
-								1868
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 274.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "single-project/artifacts-single.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 31362,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7698,
-								7732
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3829.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
 					"buffer": 9,
+					"file": "app/page/app-includes/header.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 73,
+						"buffer_size": 5716,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10,
-								10
+								3925,
+								3934
 							]
 						],
 						"settings":
 						{
-							"auto_name": "Reporting:",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1477.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 443,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										287,
+										303
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								295,
+								295
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/ps/register.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1255,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1253,
+								998
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/page/single-project-artifacts-single.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 32670,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3538,
+								3538
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2011.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
 					"type": "text"
 				}
 			]
@@ -1345,31 +1495,61 @@
 			"sheets":
 			[
 				{
-					"buffer": 10,
-					"file": "single-project/single_project_utils.js",
+					"buffer": 13,
+					"file": "app/static/js/single_project_utils.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6234,
+						"buffer_size": 8106,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4365,
-								4365
+								1256,
+								1256
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 3.0,
-						"translation.y": 1537.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/static/js/phil_utils.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1981,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								129,
+								129
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
 					"type": "text"
 				}
 			]
@@ -1403,7 +1583,7 @@
 		"cols":
 		[
 			0.0,
-			0.781495608322,
+			0.484476295447,
 			1.0
 		],
 		"rows":
@@ -1979,7 +2159,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 248.0,
+	"side_bar_width": 278.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

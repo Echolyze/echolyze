@@ -32,6 +32,11 @@ if (count($_POST)) {
         $redirectPage = 'account';
     }
 
+    $errors = $user->log->getAllErrors();
+    if (count($errors) == 0) {
+        redirect("../all-projects");
+    }
+
     echo json_encode(
         array(
             'error'   => $user->log->getAllErrors(),

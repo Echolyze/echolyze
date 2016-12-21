@@ -20,7 +20,7 @@
 	include 'app-includes/global_loading.php';
 	?>
 	<section class="content-header content-header-pe hidden">
-		<h1 class="col-xs-6 omega">Projects</h1>
+		<h1 class="col-xs-6 omega">All Projects</h1>
 		<div class="col-xs-6 alpha">
 			<button id="addProjectCTA" type="button" class="btn btn-primary pull-right">Add Project</button>
 		</div>
