@@ -1,6 +1,13 @@
 <?php
 	include("../core/config.php");
+
+	// Get Sendgrid/Heroku Vars
+	$sendgridPassword = getenv('SENDGRID_PHIL_PW');
+	$sendgridUsername = getenv('SENDGRID_PHIL_US');
+
+
 	
+
 
 	//Process Update
 	if(count($_POST)){
@@ -33,8 +40,8 @@
 
 		//send grid to mail to recirpent 
 		$url = 'https://api.sendgrid.com/';
-		$user = 'phil@phileverson.com';
-		$pass = 'John1993';
+		// $user = 'phil@phileverson.com';
+		// $pass = 'John1993';
 
 		$body = '<p>Please use the link below to reset your Echolyze account password.</p><h3>Account Details</h3><p>Email Address: ' . $res->Email . '</p><p>Password Reset Link: ' . $pwURL . '</p>';
 		$subject = 'Echolyze Password Reset';
@@ -43,8 +50,8 @@
 		
 
 		$params = array(
-		    'api_user'  => $user,
-		    'api_key'   => $pass,
+		    'api_user'  => $sendgridUsername,
+		    'api_key'   => $sendgridPassword,
 		    // 'x-smtpapi' => json_encode($json_string),
 		    'to'        => $res->Email,
 		    'subject'   => $subject,
