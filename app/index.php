@@ -6,9 +6,13 @@
  */
 
 
-if(!file_exists("core/config.php")){
-	header("Location: install/");
+if(!file_exists("../echolyze_user_config.php")){
+	if (!strpos($_SERVER['SERVER_NAME'], 'herokuapp')) {
+		include('configure_env.php');
+		exit();
+	}
 }
+
 
 $base = dirname($_SERVER['PHP_SELF']);
 $fullPagePath = substr($_SERVER['REQUEST_URI'], strlen($base)+1);

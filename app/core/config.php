@@ -1,4 +1,9 @@
 <?php
+
+
+// include ROOT . 'primary_config.php';
+include('primary_config_two.php');
+
 include('inc/functions.php');
 include('autoload.php');
 // include(dirname(__FILE__) .'/../../../lib/uFlex/autoload.php');
@@ -7,11 +12,11 @@ include('autoload.php');
 $user = new \ptejada\uFlex\User();
 
 //Add database credentials and information
-    $user->config->database->host = 'us-cdbr-iron-east-04.cleardb.net';
-    $user->config->database->user = 'b9945b66a6e23f';
-    $user->config->database->password = '76d254b8';
-    $user->config->database->name = 'heroku_526b8a66d403656'; //Database name
-
+    $user->config->database->host = $db_host;
+    $user->config->database->user = $db_username;
+    $user->config->database->password = $db_password;
+    $user->config->database->name = $db_name; //Database name
+    // var_dump($user->config->database);
 /*
  * Instead of editing the Class files directly you may make
  * the changes in this space before calling the ->start() method.

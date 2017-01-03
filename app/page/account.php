@@ -1,7 +1,6 @@
 <?php
     //If user is not signed in refirect
     if(!$user->isSigned()) redirect("../login");
-    echo '<script>console.log("auth is checked, good to go!");</script>';
 
     include 'app-includes/header.php';
     include 'app-includes/leftnav.php';
@@ -41,7 +40,7 @@
                         <input name="website" type="text" value="<?php echo $user->website?>" class="form-control">
                     </div>
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" target="_Blank" class="btn btn-primary">Update</button>
                     </div>
                 </div>
                 </form>
@@ -64,7 +63,7 @@
                     <input name="c" type="hidden" value="<?php echo getVar("c")?>">
 
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary">Change Password</button>
+                        <button type="submit" target="_Blank" class="btn btn-primary">Change Password</button>
                     </div>
                 </div>
                 </form>

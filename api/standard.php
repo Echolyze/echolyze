@@ -2114,14 +2114,33 @@ class PHP_API_AUTH {
 
 // uncomment the lines below when running in stand-alone mode:
 
-$api = new PHP_CRUD_API(array(
+// echo ' hi';
+
+include ('primary_config_db.php');
+
+// $db_host = 'us-cdbr-iron-east-04.cleardb.net';
+// $db_username = 'b9945b66a6e23f';
+// $db_password = '76d254b8';
+// $db_name = 'heroku_526b8a66d403656';
+
+$arrayForAPI = array(
 	'dbengine'=>'MySQL',
-	'hostname'=>'us-cdbr-iron-east-04.cleardb.net',
-	'username'=>'b9945b66a6e23f',
-	'password'=>'76d254b8',
-	'database'=>'heroku_526b8a66d403656',
+	'hostname'=> $db_host,
+	'username'=> $db_username,
+	'password'=> $db_password,
+	'database'=> $db_name,
 	'charset'=>'utf8'
-));
+	);
+// $arrayForAPI = array(
+// 	'dbengine'=>'MySQL',
+// 	'hostname'=> $db_host,
+// 	'username'=> $db_username,
+// 	'password'=> $db_password,
+// 	'database'=> $db_name,
+// 	'charset'=>'utf8'
+// 	);
+
+$api = new PHP_CRUD_API($arrayForAPI);
 $api->executeCommand();
 
 // For Microsoft SQL Server 2012 use:
