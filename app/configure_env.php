@@ -7,6 +7,90 @@
 
 <?php
 
+function BasicDBSchema($db_host, $db_username, $db_password, $db_name)
+{
+  $dbSchema = array();
+$dbSchema['Create Artifacts'] =
+"CREATE TABLE `artifacts` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(300) DEFAULT NULL,
+  `body` text,
+  `related_project` int(11) DEFAULT NULL,
+  `global_codes` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=262 DEFAULT CHARSET=utf8;";
+$dbSchema['Create Codes'] =
+"CREATE TABLE `codes` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) DEFAULT NULL,
+  `related_project` int(11) DEFAULT NULL,
+  `description` text,
+  `related_owner` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8;";
+$dbSchema['Create Fragments'] =
+"CREATE TABLE `fragments` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `related_artifact` int(11) DEFAULT NULL,
+  `inline_id` int(11) DEFAULT NULL,
+  `codes` varchar(300) DEFAULT NULL,
+  `nodeA` varchar(300) DEFAULT NULL,
+  `nodeB` varchar(300) DEFAULT NULL,
+  `feeling` varchar(300) DEFAULT NULL,
+  `comments` text,
+  `related_project` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1102 DEFAULT CHARSET=utf8;";
+$dbSchema['Create Nodes'] =
+"CREATE TABLE `nodes` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) DEFAULT NULL,
+  `related_project` int(11) DEFAULT NULL,
+  `description` text,
+  `related_owner` int(11) DEFAULT NULL,
+  `parent_node` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=462 DEFAULT CHARSET=utf8;";
+$dbSchema['Create Projects'] =
+"CREATE TABLE `projects` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) DEFAULT NULL,
+  `description` text,
+  `related_owner` int(11) DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=192 DEFAULT CHARSET=utf8;";
+$dbSchema['Create Users'] =
+"CREATE TABLE `users` (
+  `ID` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(200) DEFAULT NULL,
+  `last_name` varchar(200) DEFAULT NULL,
+  `Email` varchar(300) DEFAULT NULL,
+  `Password` varchar(300) DEFAULT NULL,
+  `Username` varchar(300) DEFAULT NULL,
+  `Activated` tinyint(1) DEFAULT '0',
+  `Confirmation` char(40) DEFAULT NULL,
+  `RegDate` int(11) DEFAULT NULL,
+  `LastLogin` int(11) DEFAULT NULL,
+  `GroupID` int(2) DEFAULT '1',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8;";
+
+
+$todoAppMySQLConnection = mysqli_connect($db_host, $db_username, $db_password, $db_name);
+
+  foreach ($dbSchema as $task => $sqlCode) {
+    if (mysqli_query($todoAppMySQLConnection, $sqlCode)) {
+      echo '</br>Success: ' . $task . '</br>';
+    } else {
+      echo '</br>Error: ' . $task . ' | ' . mysqli_error($todoAppMySQLConnection) . '</br>';
+    }
+  }
+
+
+}
+
+// Actual code to create config file
 $configFileMade = false;
 $configFilename = '../echolyze_user_config.php';
 
@@ -18,10 +102,11 @@ if ($_POST['db_host'] && $_POST['db_username'] && $_POST['db_password'] && $_POS
   file_put_contents($configFilename,'$db_name = \'' . $_POST['db_name'] . '\';' . PHP_EOL, FILE_APPEND);
   file_put_contents($configFilename,'?>', FILE_APPEND);
 
+  // Update DB with what it needs:
+  BasicDBSchema($_POST['db_host'], $_POST['db_username'], $_POST['db_password'], $_POST['db_name']);
+
   $configFileMade = true;
 }
-
-
 
 ?>
 
